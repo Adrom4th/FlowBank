@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Cliente_FlowBank {
     
-    private int id;
+    private Integer id;
     private String nome;
     private String email;
     private String celular;
@@ -12,6 +12,7 @@ public class Cliente_FlowBank {
     private String senha;
     
     //Getters
+    public Integer getID() { return id; }
     public String getNome() { return nome; }   
     public String getEmail() { return email; }
     public String getCelular() { return celular; }
@@ -19,6 +20,7 @@ public class Cliente_FlowBank {
     public String getSenha() { return senha; }
     
     //Setters
+    public void setId(Integer id) { this.id = id; }
     public void setNome(String nome) { this.nome = nome; }
     public void setEmail(String email) { this.email = email; }
     public void setCelular(String celular) { this.celular = celular; }
