@@ -1,5 +1,8 @@
 package Telas;
 
+import conexao.ConexaoDAO;
+import javax.swing.JOptionPane;
+
 public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
@@ -43,7 +46,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(2, 3, 5));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -79,6 +82,7 @@ public class TelaLogin extends javax.swing.JFrame {
         btnLogin.setForeground(new java.awt.Color(0, 0, 0));
         btnLogin.setText("Login");
         btnLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnLogin.setContentAreaFilled(false);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -96,6 +100,8 @@ public class TelaLogin extends javax.swing.JFrame {
         btncadastre_se.setForeground(new java.awt.Color(0, 153, 255));
         btncadastre_se.setText("Cadastre-se aqui.");
         btncadastre_se.setBorder(null);
+        btncadastre_se.setBorderPainted(false);
+        btncadastre_se.setContentAreaFilled(false);
         btncadastre_se.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncadastre_seActionPerformed(evt);
@@ -107,6 +113,7 @@ public class TelaLogin extends javax.swing.JFrame {
         brnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         brnCancelar.setText("Cancelar");
         brnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        brnCancelar.setContentAreaFilled(false);
         brnCancelar.setMaximumSize(new java.awt.Dimension(66, 20));
         brnCancelar.setMinimumSize(new java.awt.Dimension(66, 20));
         brnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +126,7 @@ public class TelaLogin extends javax.swing.JFrame {
         txtSenha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtSenha.setCaretColor(new java.awt.Color(0, 0, 0));
         txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtSenha.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -126,6 +134,7 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmail.setSelectionColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -209,7 +218,19 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+       String email, senha;
+       
+       email = txtEmail.getText();
+       senha = new String (txtSenha.getPassword());
+       ConexaoDAO conexaoDAO = new ConexaoDAO();
+       
+       if (conexaoDAO.loginCliente(email, senha)) {
+           JOptionPane.showMessageDialog(null, "Login autenticado");
+           this.dispose();
+       }
+       else {
+           JOptionPane.showMessageDialog(null, "E-mail ou senha incorreto(s)");
+       }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btncadastre_seActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncadastre_seActionPerformed
