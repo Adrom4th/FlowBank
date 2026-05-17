@@ -29,10 +29,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
+        btnCadastro = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        brnCancelar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
@@ -92,13 +92,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Email:");
 
-        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
-        btnLogin.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(0, 0, 0));
-        btnLogin.setText("Cadastrar");
-        btnLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnLogin.setContentAreaFilled(false);
-        btnLogin.addActionListener(this::btnLoginActionPerformed);
+        btnCadastro.setBackground(new java.awt.Color(255, 255, 255));
+        btnCadastro.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCadastro.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastro.setText("Cadastrar");
+        btnCadastro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnCadastro.setContentAreaFilled(false);
+        btnCadastro.addActionListener(this::btnCadastroActionPerformed);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 204, 255));
@@ -106,15 +106,15 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
 
-        brnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        brnCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        brnCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        brnCancelar.setText("Cancelar");
-        brnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        brnCancelar.setContentAreaFilled(false);
-        brnCancelar.setMaximumSize(new java.awt.Dimension(66, 20));
-        brnCancelar.setMinimumSize(new java.awt.Dimension(66, 20));
-        brnCancelar.addActionListener(this::brnCancelarActionPerformed);
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setMaximumSize(new java.awt.Dimension(66, 20));
+        btnCancelar.setMinimumSize(new java.awt.Dimension(66, 20));
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         txtSenha.setBackground(new java.awt.Color(255, 255, 255));
         txtSenha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -211,9 +211,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(brnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(175, 175, 175)
@@ -256,8 +256,8 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addComponent(txtSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(brnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
@@ -284,27 +284,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String email, senha;
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        //blablabla
+    }//GEN-LAST:event_btnCadastroActionPerformed
 
-        email = txtNome.getText();
-        senha = new String (txtSenha.getPassword());
-        ConexaoDAO conexaoDAO = new ConexaoDAO();
-
-        if (conexaoDAO.loginCliente(email, senha)) {
-            JOptionPane.showMessageDialog(null, "Login autenticado");
-            this.dispose();
-            TelaCadastro telaCadastro = new TelaCadastro();
-            telaCadastro.setVisible(true);
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "E-mail ou senha incorreto(s)");
-        }
-    }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void brnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_brnCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
@@ -358,8 +344,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton brnCancelar;
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnCadastro;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
