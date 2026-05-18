@@ -289,14 +289,16 @@ public class TelaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        String nome = txtNome.getText();
-        String email = txtEmail.getText();
-        String celular = txtCelular.getText();
-        String data_nascimento = txtData_Nascimento.getText();
-        String senha = new String(txtSenha.getPassword());
-        String confirmar_Senha = new String(txtConfirmar_Senha.getPassword());
+        String nome = txtNome.getText(); //Obrigatório
+        String email = txtEmail.getText();  //Obrigatório
+        String celular = txtCelular.getText(); //Obrigatório
+        String data_nascimento = txtData_Nascimento.getText(); //Obrigatório
+        String senha = new String(txtSenha.getPassword()); //Obrigatório
+        String confirmar_Senha = new String(txtConfirmar_Senha.getPassword()); //Obrigatório
         
         
+        
+   
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
