@@ -1,9 +1,12 @@
 
 package Telas;
-
-import java.util.Date;
+import java.text.DateFormat;
+import conexao.Cliente_FlowBank;
+import java.sql.Date;
 import conexao.ConexaoDAO;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 public class TelaCadastro extends javax.swing.JFrame {
     
@@ -49,7 +52,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtConfirmar_Senha = new javax.swing.JPasswordField();
 
-        txtEmail1.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmail1.setSelectionColor(new java.awt.Color(0, 0, 0));
 
@@ -85,20 +87,15 @@ public class TelaCadastro extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Cadastre-se");
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nome:");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Email:");
 
-        btnCadastro.setBackground(new java.awt.Color(255, 255, 255));
         btnCadastro.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        btnCadastro.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastro.setText("Cadastrar");
         btnCadastro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnCadastro.setContentAreaFilled(false);
@@ -110,9 +107,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
 
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnCancelar.setContentAreaFilled(false);
@@ -120,45 +115,36 @@ public class TelaCadastro extends javax.swing.JFrame {
         btnCancelar.setMinimumSize(new java.awt.Dimension(66, 20));
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
-        txtSenha.setBackground(new java.awt.Color(255, 255, 255));
         txtSenha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSenha.setCaretColor(new java.awt.Color(0, 0, 0));
         txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtSenha.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtSenha.addActionListener(this::txtSenhaActionPerformed);
 
-        txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNome.setSelectionColor(new java.awt.Color(0, 0, 0));
+        txtNome.addActionListener(this::txtNomeActionPerformed);
 
-        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmail.addActionListener(this::txtEmailActionPerformed);
 
-        txtCelular.setBackground(new java.awt.Color(255, 255, 255));
         txtCelular.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtCelular.addActionListener(this::txtCelularActionPerformed);
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Celular:");
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Data de Nascimento:");
 
-        txtData_Nascimento.setBackground(new java.awt.Color(255, 255, 255));
         txtData_Nascimento.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txtData_Nascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtData_Nascimento.addActionListener(this::txtData_NascimentoActionPerformed);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Senha:");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(0, 153, 255));
         jButton1.setText("Já possuo conta");
         jButton1.setToolTipText("");
@@ -166,13 +152,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Confirmar senha: ");
 
-        txtConfirmar_Senha.setBackground(new java.awt.Color(255, 255, 255));
         txtConfirmar_Senha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtConfirmar_Senha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtConfirmar_Senha.setCaretColor(new java.awt.Color(0, 0, 0));
         txtConfirmar_Senha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtConfirmar_Senha.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtConfirmar_Senha.addActionListener(this::txtConfirmar_SenhaActionPerformed);
@@ -294,9 +277,63 @@ public class TelaCadastro extends javax.swing.JFrame {
         String celular = txtCelular.getText();
         String data_nascimento = txtData_Nascimento.getText();
         String senha = new String(txtSenha.getPassword());
-        String confirmar_Senha = new String(txtConfirmar_Senha.getPassword());
+        String confirmar_senha = new String(txtConfirmar_Senha.getPassword());
         
+        String mensagem = "";
         
+        if (nome.equals("")) {
+            mensagem += "-nome\n";
+        }
+        if (email.equals("")) {
+            mensagem += "-email\n[";
+        }
+        if (celular.equals("")) {
+            mensagem += "-celular\n";
+        }
+        if (data_nascimento.equals("")) {
+            mensagem +="-Data de Nascimento\n";
+        }
+        if (senha.equals("")) {
+            mensagem +="-senha\n";
+        }
+        if (confirmar_senha.equals("")) {
+            mensagem +="-Confirmar Senha\n";
+        }
+        
+        if (mensagem.equals("")) {
+            if (!senha.equals(confirmar_senha)) {
+                mensagem +="As senhas devem ser iguais";
+                JOptionPane.showMessageDialog(this,mensagem);
+            }
+            else {
+                try {
+                    Cliente_FlowBank cliente = new Cliente_FlowBank();
+                    cliente.setNome(nome);
+                    cliente.setEmail(email);
+                    cliente.setCelular(celular);
+                    cliente.setSenha(senha);
+                    
+                    DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+                    
+                    Date dataNascimento = new Date(df.parse(data_nascimento).getTime());
+                    cliente.setData_Nascimento(dataNascimento);
+                    
+                    ConexaoDAO conexaoDAO = new ConexaoDAO();
+                    conexaoDAO.inserirCliente(cliente);
+                    JOptionPane.showMessageDialog(this, "Cliente Cadastrado1");
+                    
+                    TelaLogin telaLogin = new TelaLogin();
+                    telaLogin.setVisible(true);
+                    this.dispose();
+                }
+                catch (ParseException exception) {
+                    JOptionPane.showMessageDialog(this, "Data Invalida!");
+                }
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Os seguintes campos nao foram preenchidos:\n"+mensagem);
+        }
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -328,6 +365,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void txtConfirmar_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmar_SenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtConfirmar_SenhaActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     /**
      * @param args the command line arguments
