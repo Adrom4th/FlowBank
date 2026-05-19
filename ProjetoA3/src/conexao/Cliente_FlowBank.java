@@ -12,7 +12,7 @@ public class Cliente_FlowBank {
     private String senha;
     
     //Getters
-    public Integer getID() { return id; }
+    public Integer getId() { return id; }
     public String getNome() { return nome; }   
     public String getEmail() { return email; }
     public String getCelular() { return celular; }
