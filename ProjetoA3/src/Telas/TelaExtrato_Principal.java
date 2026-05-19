@@ -5,18 +5,18 @@ import conexao.Cliente_FlowBank;
 import javax.swing.JOptionPane;
 import conexao.ConexaoDAO;
 
-public class TelaPrincipal_Extrato extends javax.swing.JFrame {
+public class TelaExtrato_Principal extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal_Extrato.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaExtrato_Principal.class.getName());
 
     /**
      * Creates new form TelaPrincipal_Extrato
      */
-    public TelaPrincipal_Extrato() {
+    public TelaExtrato_Principal() {
         initComponents();
     }
     
-    public TelaPrincipal_Extrato(Integer id) {
+    public TelaExtrato_Principal(Integer id) {
         initComponents();
         
         ConexaoDAO conexaoDAO = new ConexaoDAO();
@@ -66,7 +66,7 @@ public class TelaPrincipal_Extrato extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaPrincipal_Extrato().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new TelaExtrato_Principal().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
