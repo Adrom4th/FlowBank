@@ -1,9 +1,13 @@
 
 package Telas;
 
-import java.util.Date;
+import java.text.DateFormat;
+import conexao.Cliente_FlowBank;
+import java.sql.Date;
 import conexao.ConexaoDAO;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 public class TelaCadastro extends javax.swing.JFrame {
     
@@ -123,6 +127,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNome.setSelectionColor(new java.awt.Color(0, 0, 0));
+        txtNome.addActionListener(this::txtNomeActionPerformed);
 
         txtEmail.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -271,14 +276,70 @@ public class TelaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        String nome = txtNome.getText();
-        String email = txtEmail.getText();
-        String celular = txtCelular.getText();
-        String data_nascimento = txtData_Nascimento.getText();
-        String senha = new String(txtSenha.getPassword());
-        String confirmar_Senha = new String(txtConfirmar_Senha.getPassword());
+
+        String nome = txtNome.getText(); //Obrigatório
+        String email = txtEmail.getText();  //Obrigatório
+        String celular = txtCelular.getText(); //Obrigatório
+        String data_nascimento = txtData_Nascimento.getText(); //Obrigatório
+        String senha = new String(txtSenha.getPassword()); //Obrigatório
+        String confirmar_senha = new String(txtConfirmar_Senha.getPassword()); //Obrigatório
+
         
+        String mensagem = "";
+ 
+        if (nome.equals("")) {
+            mensagem += "-nome\n";
+        }
+        if (email.equals("")) {
+            mensagem += "-email\n[";
+        }
+        if (celular.equals("")) {
+            mensagem += "-celular\n";
+        }
+        if (data_nascimento.equals("")) {
+            mensagem +="-Data de Nascimento\n";
+        }
+        if (senha.equals("")) {
+            mensagem +="-senha\n";
+        }
+        if (confirmar_senha.equals("")) {
+            mensagem +="-Confirmar Senha\n";
+        }
         
+        if (mensagem.equals("")) {
+            if (!senha.equals(confirmar_senha)) {
+                mensagem +="As senhas devem ser iguais";
+                JOptionPane.showMessageDialog(this,mensagem);
+            }
+            else {
+                try {
+                    Cliente_FlowBank cliente = new Cliente_FlowBank();
+                    cliente.setNome(nome);
+                    cliente.setEmail(email);
+                    cliente.setCelular(celular);
+                    cliente.setSenha(senha);
+                    
+                    DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+                    
+                    Date dataNascimento = new Date(df.parse(data_nascimento).getTime());
+                    cliente.setData_Nascimento(dataNascimento);
+                    
+                    ConexaoDAO conexaoDAO = new ConexaoDAO();
+                    conexaoDAO.inserirCliente(cliente);
+                    JOptionPane.showMessageDialog(this, "Cliente Cadastrado!");
+                    
+                    TelaLogin telaLogin = new TelaLogin();
+                    telaLogin.setVisible(true);
+                    this.dispose();
+                }
+                catch (ParseException exception) {
+                    JOptionPane.showMessageDialog(this, "Data Invalida!");
+                }
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Os seguintes campos nao foram preenchidos:\n"+mensagem);
+        }
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -310,6 +371,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void txtConfirmar_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmar_SenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtConfirmar_SenhaActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     /**
      * @param args the command line arguments
