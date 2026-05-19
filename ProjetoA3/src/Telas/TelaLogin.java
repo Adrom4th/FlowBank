@@ -132,8 +132,7 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -290,7 +289,7 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
        if (conexaoDAO.loginCliente(email, senha)) {
            JOptionPane.showMessageDialog(null, "Login autenticado");
            this.dispose();
-           TelaPrincipal_Extrato telaExtrato = new TelaPrincipal_Extrato();
+           TelaExtrato_Principal telaExtrato = new TelaExtrato_Principal();
            telaExtrato.setVisible(true);
        }
        else {
