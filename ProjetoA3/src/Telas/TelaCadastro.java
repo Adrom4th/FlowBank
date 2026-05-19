@@ -323,7 +323,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     
                     ConexaoDAO conexaoDAO = new ConexaoDAO();
                     conexaoDAO.inserirCliente(cliente);
-                    JOptionPane.showMessageDialog(this, "Cliente Cadastrado1");
+                    JOptionPane.showMessageDialog(this, "Cliente Cadastrado!");
                     
                     TelaLogin telaLogin = new TelaLogin();
                     telaLogin.setVisible(true);
