@@ -257,8 +257,8 @@ public class TelaLogin extends javax.swing.JFrame {
        if (conexaoDAO.loginCliente(email, senha)) {
            JOptionPane.showMessageDialog(null, "Login autenticado");
            this.dispose();
-           TelaCadastro telaCadastro = new TelaCadastro();
-           telaCadastro.setVisible(true);
+           TelaPrincipal_Extrato telaExtrato = new TelaPrincipal_Extrato();
+           telaExtrato.setVisible(true);
        }
        else {
            JOptionPane.showMessageDialog(null, "E-mail ou senha incorreto(s)");
