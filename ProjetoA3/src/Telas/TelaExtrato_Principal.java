@@ -3,7 +3,7 @@ package Telas;
 
 import conexao.Cliente_FlowBank;
 import javax.swing.JOptionPane;
-import conexao.ConexaoDAO;
+import conexao.ClienteDAO;
 
 public class TelaExtrato_Principal extends javax.swing.JFrame {
     
@@ -19,8 +19,8 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
     public TelaExtrato_Principal(Integer id) {
         initComponents();
         
-        ConexaoDAO conexaoDAO = new ConexaoDAO();
-        Cliente_FlowBank cliente = conexaoDAO.BuscarClientePorId(id);
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente_FlowBank cliente = clienteDAO.BuscarClientePorId(id);
         txtId.setText(String.valueOf(cliente.getId()));
         txtNome.setText(cliente.getNome());
     }

@@ -7,10 +7,10 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import conexao.Cliente_FlowBank;
 
-public class ConexaoDAO {
+public class ClienteDAO {
     private final Connection conexao;
     
-    public ConexaoDAO() {
+    public ClienteDAO() {
         this.conexao = new ConexaoBD().getConnection();
     }
     
