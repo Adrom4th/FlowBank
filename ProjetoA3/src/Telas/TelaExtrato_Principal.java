@@ -4,6 +4,9 @@ package Telas;
 import conexao.Cliente_FlowBank;
 import javax.swing.JOptionPane;
 import conexao.ClienteDAO;
+import conexao.TransacoesDAO;
+import conexao.TransacoesExtrato_FlowBank;
+import java.util.List;
 
 public class TelaExtrato_Principal extends javax.swing.JFrame {
     
@@ -23,6 +26,11 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         Cliente_FlowBank cliente = clienteDAO.BuscarClientePorId(id);
         txtId.setText(String.valueOf(cliente.getId()));
         txtNome.setText(cliente.getNome());
+        
+        TransacoesDAO transacoesDAO = new TransacoesDAO();
+        List<TransacoesExtrato_FlowBank> lista = transacoesDAO.buscarTransacoesPorId(cliente.getId());
+        
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

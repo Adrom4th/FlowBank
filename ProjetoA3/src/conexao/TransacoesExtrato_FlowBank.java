@@ -4,7 +4,7 @@ package conexao;
 import java.sql.Timestamp;
 import java.math.BigDecimal;
 
-public class Transacoes_Extrato_FlowBank {
+public class TransacoesExtrato_FlowBank {
     
     private Integer id_transacao;
     private Integer id_cliente;
