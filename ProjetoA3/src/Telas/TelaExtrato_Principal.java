@@ -36,21 +36,204 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        Label_Extrato = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        txtTransacoes = new javax.swing.JLabel();
+        btnExportar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        txtInicio = new javax.swing.JLabel();
+        btnTransferencia = new javax.swing.JButton();
+        bntPerfil = new javax.swing.JButton();
+        btnNome = new javax.swing.JButton();
+        btnID = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        Label_Extrato.setBackground(new java.awt.Color(0, 0, 0));
+        Label_Extrato.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Label_Extrato.setForeground(new java.awt.Color(0, 0, 0));
+        Label_Extrato.setText("Extrato");
+
+        jTable2.setBackground(new java.awt.Color(255, 255, 255));
+        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Tipo", "Destinatário", "Valor", "Data"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        txtTransacoes.setBackground(new java.awt.Color(204, 204, 204));
+        txtTransacoes.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtTransacoes.setForeground(new java.awt.Color(0, 204, 204));
+        txtTransacoes.setText("Últimas Transações");
+
+        btnExportar.setBackground(new java.awt.Color(255, 255, 255));
+        btnExportar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnExportar.setForeground(new java.awt.Color(0, 204, 204));
+        btnExportar.setText("Exportar");
+        btnExportar.addActionListener(this::btnExportarActionPerformed);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+
+        txtInicio.setBackground(new java.awt.Color(255, 255, 255));
+        txtInicio.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtInicio.setForeground(new java.awt.Color(0, 204, 204));
+        txtInicio.setText("Início");
+
+        btnTransferencia.setBackground(new java.awt.Color(0, 0, 51));
+        btnTransferencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnTransferencia.setText("Realizar Nova Transferência");
+        btnTransferencia.addActionListener(this::btnTransferenciaActionPerformed);
+
+        bntPerfil.setBackground(new java.awt.Color(0, 0, 51));
+        bntPerfil.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bntPerfil.setText("Editar Perfil");
+        bntPerfil.addActionListener(this::bntPerfilActionPerformed);
+
+        btnNome.setBackground(new java.awt.Color(0, 0, 51));
+        btnNome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnNome.setText("NOME");
+        btnNome.setName("bntNome"); // NOI18N
+        btnNome.addActionListener(this::btnNomeActionPerformed);
+
+        btnID.setBackground(new java.awt.Color(0, 0, 51));
+        btnID.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnID.setText("ID");
+        btnID.setName("ID"); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(207, 207, 207)
+                .addComponent(txtInicio)
+                .addGap(34, 34, 34)
+                .addComponent(btnTransferencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bntPerfil)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnID, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnNome, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnID, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtInicio)
+                            .addComponent(btnTransferencia)
+                            .addComponent(bntPerfil))
+                        .addGap(10, 10, 10))))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTransacoes)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Label_Extrato)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnExportar))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_Extrato)
+                    .addComponent(btnExportar))
+                .addGap(35, 35, 35)
+                .addComponent(txtTransacoes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNomeActionPerformed
+
+    private void bntPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bntPerfilActionPerformed
+
+    private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTransferenciaActionPerformed
+
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExportarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +261,19 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label_Extrato;
+    private javax.swing.JButton bntPerfil;
+    private javax.swing.JButton btnExportar;
+    private javax.swing.JButton btnID;
+    private javax.swing.JButton btnNome;
+    private javax.swing.JButton btnTransferencia;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JLabel txtInicio;
+    private javax.swing.JLabel txtTransacoes;
     // End of variables declaration//GEN-END:variables
 }
