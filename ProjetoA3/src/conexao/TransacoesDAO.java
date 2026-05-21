@@ -21,7 +21,7 @@ public class TransacoesDAO {
     
     public List<TransacoesExtrato_FlowBank> buscarTransacoesPorId (int id) {
         List <TransacoesExtrato_FlowBank> lista = new ArrayList<>();       
-        String sql = "SELECT * FROM extrato WHERE id = ?";
+        String sql = "SELECT * FROM extrato WHERE id_cliente = ?";
         
         try (PreparedStatement ps = conexao.prepareStatement (sql)) {
             ps.setInt(1, id);

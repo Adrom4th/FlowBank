@@ -1,6 +1,7 @@
 package Telas;
 
 import conexao.ClienteDAO;
+import conexao.Cliente_FlowBank;
 import java.awt.Insets;
 import javax.swing.JOptionPane;
 
@@ -95,6 +96,7 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
         );
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Login");
 
@@ -288,9 +290,12 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
        ClienteDAO clienteDAO = new ClienteDAO();
        
        if (clienteDAO.loginCliente(email, senha)) {
-           JOptionPane.showMessageDialog(null, "Login autenticado");
+           JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
+           
+           Cliente_FlowBank cliente = clienteDAO.buscarClientePorEmail(email);
+           
            this.dispose();
-           TelaExtrato_Principal telaExtrato = new TelaExtrato_Principal();
+           TelaExtrato_Principal telaExtrato = new TelaExtrato_Principal(cliente.getId());
            telaExtrato.setVisible(true);
        }
        else {

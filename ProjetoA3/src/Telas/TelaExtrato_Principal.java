@@ -6,7 +6,11 @@ import javax.swing.JOptionPane;
 import conexao.ClienteDAO;
 import conexao.TransacoesDAO;
 import conexao.TransacoesExtrato_FlowBank;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
 
 public class TelaExtrato_Principal extends javax.swing.JFrame {
     
@@ -23,14 +27,25 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         initComponents();
         
         ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente_FlowBank cliente = clienteDAO.BuscarClientePorId(id);
-        txtId.setText(String.valueOf(cliente.getId()));
-        txtNome.setText(cliente.getNome());
+        Cliente_FlowBank cliente = clienteDAO.buscarClientePorId(id);
+        lblId.setText(String.valueOf(cliente.getId()));
+        lblNome.setText(cliente.getNome());
         
         TransacoesDAO transacoesDAO = new TransacoesDAO();
         List<TransacoesExtrato_FlowBank> lista = transacoesDAO.buscarTransacoesPorId(cliente.getId());
         
-        
+        DefaultTableModel modelo = (DefaultTableModel) tblExtrato.getModel();
+        for (TransacoesExtrato_FlowBank transacoes : lista) {
+            String formatoData = "dd/MM/yyyy HH:mm";
+            SimpleDateFormat dataConvertida = new SimpleDateFormat(formatoData);
+            
+            Integer Id_Transacao = transacoes.getId_Transacao();
+            String Tipo = transacoes.getTipo_Transacao();
+            BigDecimal Valor = transacoes.getValor_Transacao();
+            String Data = dataConvertida.format(transacoes.getData_Transacao());
+            
+            modelo.addRow(new Object[] {Id_Transacao, Tipo, Valor, Data});
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -41,15 +56,17 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Label_Extrato = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblExtrato = new javax.swing.JTable();
         txtTransacoes = new javax.swing.JLabel();
         btnExportar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        txtInicio = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         btnTransferencia = new javax.swing.JButton();
+        txtInicio = new javax.swing.JLabel();
         bntPerfil = new javax.swing.JButton();
-        btnNome = new javax.swing.JButton();
-        btnID = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,9 +90,8 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         Label_Extrato.setForeground(new java.awt.Color(0, 0, 0));
         Label_Extrato.setText("Extrato");
 
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
-        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblExtrato.setBackground(new java.awt.Color(255, 255, 255));
+        tblExtrato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -83,18 +99,19 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Tipo", "Destinatário", "Valor", "Data"
+                "Id_Transacao", "Tipo", "Valor", "Data"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        tblExtrato.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane2.setViewportView(tblExtrato);
 
         txtTransacoes.setBackground(new java.awt.Color(204, 204, 204));
         txtTransacoes.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -109,65 +126,89 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 51));
 
-        txtInicio.setBackground(new java.awt.Color(255, 255, 255));
-        txtInicio.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txtInicio.setForeground(new java.awt.Color(0, 204, 204));
-        txtInicio.setText("Início");
+        lblNome.setBackground(new java.awt.Color(255, 255, 255));
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNome.setText("Nome_Usuario");
+
+        lblId.setBackground(new java.awt.Color(255, 255, 255));
+        lblId.setForeground(new java.awt.Color(255, 255, 255));
+        lblId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblId.setText("Id_Usuario");
+
+        jLabel1.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel1.setText("Id:");
+
+        jPanel3.setOpaque(false);
 
         btnTransferencia.setBackground(new java.awt.Color(0, 0, 51));
         btnTransferencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnTransferencia.setText("Realizar Nova Transferência");
         btnTransferencia.addActionListener(this::btnTransferenciaActionPerformed);
 
+        txtInicio.setBackground(new java.awt.Color(255, 255, 255));
+        txtInicio.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtInicio.setForeground(new java.awt.Color(0, 204, 204));
+        txtInicio.setText("Início");
+
         bntPerfil.setBackground(new java.awt.Color(0, 0, 51));
         bntPerfil.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         bntPerfil.setText("Editar Perfil");
         bntPerfil.addActionListener(this::bntPerfilActionPerformed);
 
-        btnNome.setBackground(new java.awt.Color(0, 0, 51));
-        btnNome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnNome.setText("NOME");
-        btnNome.setName("bntNome"); // NOI18N
-        btnNome.addActionListener(this::btnNomeActionPerformed);
-
-        btnID.setBackground(new java.awt.Color(0, 0, 51));
-        btnID.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnID.setText("ID");
-        btnID.setName("ID"); // NOI18N
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtInicio)
+                .addGap(18, 18, 18)
+                .addComponent(btnTransferencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bntPerfil)
+                .addGap(25, 25, 25))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTransferencia)
+                    .addComponent(txtInicio)
+                    .addComponent(bntPerfil))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(txtInicio)
-                .addGap(34, 34, 34)
-                .addComponent(btnTransferencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bntPerfil)
-                .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNome, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnID, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18))
+                .addContainerGap(112, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblId))
+                    .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnNome, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnID, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtInicio)
-                            .addComponent(btnTransferencia)
-                            .addComponent(bntPerfil))
-                        .addGap(10, 10, 10))))
+                            .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1))
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -219,10 +260,6 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNomeActionPerformed
-
     private void bntPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPerfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bntPerfilActionPerformed
@@ -264,15 +301,17 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel Label_Extrato;
     private javax.swing.JButton bntPerfil;
     private javax.swing.JButton btnExportar;
-    private javax.swing.JButton btnID;
-    private javax.swing.JButton btnNome;
     private javax.swing.JButton btnTransferencia;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JTable tblExtrato;
     private javax.swing.JLabel txtInicio;
     private javax.swing.JLabel txtTransacoes;
     // End of variables declaration//GEN-END:variables

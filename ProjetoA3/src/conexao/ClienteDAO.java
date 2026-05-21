@@ -31,6 +31,7 @@ public class ClienteDAO {
         }
     }
     
+    
     public boolean loginCliente(String email, String senha) {
         String sql = "SELECT * FROM clientes WHERE email = ? AND senha = ?";
         
@@ -39,7 +40,12 @@ public class ClienteDAO {
             ps.setString(2, senha);
             
             try (ResultSet rs = ps.executeQuery()) {
-                return rs.next();
+                if (rs.next()) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
         }
         catch (SQLException exception) {
@@ -48,14 +54,45 @@ public class ClienteDAO {
         }
     }
     
-    public Cliente_FlowBank BuscarClientePorId(Integer id) {
+    
+    public Cliente_FlowBank buscarClientePorEmail(String email) {
+        String sql = "SELECT * FROM clientes WHERE email = ?";
+        
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setString(1, email);
+            
+            try(ResultSet rs = ps.executeQuery()) {              
+                if(rs.next()) {
+                    Cliente_FlowBank cliente = new Cliente_FlowBank();
+                    
+                    cliente.setId(rs.getInt("id"));
+                    cliente.setNome(rs.getString("nome"));
+                    cliente.setEmail(rs.getString("email"));
+                    cliente.setData_Nascimento(rs.getDate("data_nascimento"));
+                    cliente.setSenha(rs.getString("senha"));
+                    
+                    return cliente;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Não foi possível encontrar o cliente!");
+                    return null;
+                }
+            }
+        }
+        catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar cliente!");
+            throw new RuntimeException (exception);
+        }
+    }
+    
+    
+    public Cliente_FlowBank buscarClientePorId(Integer id) {
         String sql = "SELECT * FROM clientes WHERE id = ?";
         
         try (PreparedStatement ps = conexao.prepareStatement(sql)){
             ps.setInt(1, id);
             
             try (ResultSet rs = ps.executeQuery()) {
-            
                 if (rs.next()) {
                     Cliente_FlowBank cliente = new Cliente_FlowBank();
                 
