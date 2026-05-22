@@ -177,11 +177,15 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2);
+
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 204, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabel2);
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jPanel1.add(jLabel6);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -336,37 +340,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(334, 334, 334)
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jLabel6))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
-        );
+        jPanel1.add(jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -398,27 +372,27 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         String mensagem = "";
  
         if (nome.equals("")) {
-            mensagem += "-nome\n";
+            mensagem += "- Nome\n";
         }
         if (email.equals("")) {
-            mensagem += "-email\n[";
+            mensagem += "- Email\n[";
         }
         if (celular.equals("")) {
-            mensagem += "-celular\n";
+            mensagem += "- Celular\n";
         }
         if (data_nascimento.equals("")) {
-            mensagem +="-Data de Nascimento\n";
+            mensagem +="- Data de Nascimento\n";
         }
         if (senha.equals("")) {
-            mensagem +="-senha\n";
+            mensagem +="- Senha\n";
         }
         if (confirmar_senha.equals("")) {
-            mensagem +="-Confirmar Senha\n";
+            mensagem +="- Confirmar Senha\n";
         }
         
         if (mensagem.equals("")) {
             if (!senha.equals(confirmar_senha)) {
-                mensagem +="As senhas devem ser iguais";
+                mensagem +="Senhas diferentes entre si.";
                 JOptionPane.showMessageDialog(this,mensagem);
             }
             else {
