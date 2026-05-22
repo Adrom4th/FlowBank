@@ -103,9 +103,6 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         txtEmail1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -125,6 +122,9 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         btnCancelar = new javax.swing.JButton();
         btnCadastro = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         txtEmail1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmail1.setSelectionColor(new java.awt.Color(0, 0, 0));
@@ -141,43 +141,10 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(32767, 32767));
-        setPreferredSize(new java.awt.Dimension(880, 589));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(244, 245, 248));
         jPanel1.setPreferredSize(new java.awt.Dimension(1584, 474));
-
-        jPanel2.setBackground(new java.awt.Color(2, 3, 5));
-        jPanel2.setPreferredSize(new java.awt.Dimension(410, 461));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Adobe Express - file (3).jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 362, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel8)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 204, 255));
@@ -342,18 +309,48 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
 
         jPanel1.add(jPanel4);
 
+        jPanel2.setBackground(new java.awt.Color(2, 3, 5));
+        jPanel2.setPreferredSize(new java.awt.Dimension(410, 461));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Adobe Express - file (3).jpg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel8)))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
         );
 
         pack();
@@ -445,7 +442,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtConfirmar_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmar_SenhaActionPerformed
-        // TODO add your handling code here:
+        //teste pra ver se funciona
     }//GEN-LAST:event_txtConfirmar_SenhaActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
