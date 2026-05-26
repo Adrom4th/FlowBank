@@ -136,8 +136,7 @@ public class TelaTransferencia extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        drpdwFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pix", " " }));
-        drpdwFormaPagamento.setSelectedIndex(1);
+        drpdwFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha o tipo", "Pix", " " }));
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tipo de Transferência: ");
@@ -250,7 +249,30 @@ public class TelaTransferencia extends javax.swing.JFrame {
         if (confirmacao == JOptionPane.YES_OPTION) {
             String formaPagamento = drpdwFormaPagamento.getSelectedItem().toString();
             String emailDestinatario = txtChaveTransfEmail.getText();
+            String valorTexto = txtValorPagar.getText();
+
+            String mensagem = "";
+            
+            if (drpdwFormaPagamento.getSelectedItem().toString().equals("Escolha o tipo")) {
+                mensagem += "- Forma de Pagamento\n";
+            }
+            if (emailDestinatario.equals("")) {
+                mensagem += "- Chave de Transferência\n";
+            }
+            if (valorTexto.equals("")) {
+                mensagem += "- Valor a pagar\n";
+            }
+            if (!mensagem.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Os seguintes campos precisam ser preenchidos:\n"+mensagem);
+                return;
+            }
+            
             BigDecimal valor = new BigDecimal(txtValorPagar.getText());
+            if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+                JOptionPane.showMessageDialog(null, "Valor à transferir deve ser maior que 0!");
+                return;
+            }
+            
             
             ClienteDAO clienteDAO = new ClienteDAO();  
             Cliente_FlowBank destinatario = clienteDAO.buscarClientePorEmail(emailDestinatario);
