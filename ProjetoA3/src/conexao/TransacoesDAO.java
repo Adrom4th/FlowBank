@@ -46,4 +46,29 @@ public class TransacoesDAO {
         
         return lista;
     }
+    
+    public void transferencia(int id, double valor) {
+        String sql = "INSERT INTO extrato (id_cliente, valor_transacao, tipo_transacao) VALUES (?,?,?)";
+        
+        try (PreparedStatement ps = conexao.prepareStatement (sql)) {
+            double resultado = verificarSaldo(id);
+            if(resultado >= valor) {
+                ps.setInt(1, id);
+                ps.setDouble(2,valor);
+                ps.setString(3, "Saída");
+                ps.execute();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Saldo Insuficiente.");
+            }
+        }
+        catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, "Erro ao realizar a transferencia.");
+            throw new RuntimeException(exception);
+        }
+    }
+    
+    public double verificarSaldo(int id) {
+        
+    }
 }

@@ -60,6 +60,7 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sing up");
+        setPreferredSize(new java.awt.Dimension(956, 675));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 2, 1, 0));
 
@@ -294,7 +295,7 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
            Cliente_FlowBank cliente = clienteDAO.buscarClientePorEmail(email);
            
            this.dispose();
-           TelaExtrato_Principal telaExtrato = new TelaExtrato_Principal(cliente.getId());
+           TelaExtrato telaExtrato = new TelaExtrato(cliente.getId());
            telaExtrato.setVisible(true);
        }
        else {

@@ -12,18 +12,18 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
 
-public class TelaExtrato_Principal extends javax.swing.JFrame {
+public class TelaExtrato extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaExtrato_Principal.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaExtrato.class.getName());
 
     /**
      * Creates new form TelaPrincipal_Extrato
      */
-    public TelaExtrato_Principal() {
+    public TelaExtrato() {
         initComponents();
     }
     
-    public TelaExtrato_Principal(Integer id) {
+    public TelaExtrato(Integer id) {
         initComponents();
         
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -99,7 +99,6 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         lblId = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnTransferencia = new javax.swing.JButton();
         bntPerfil = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -107,6 +106,7 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         tblExtrato = new javax.swing.JTable();
         Label_Extrato = new javax.swing.JLabel();
         txtTransacoes = new javax.swing.JLabel();
+        btnTransferencia = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -142,15 +142,6 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
 
         jPanel3.setOpaque(false);
 
-        btnTransferencia.setBackground(new java.awt.Color(0, 0, 0));
-        btnTransferencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnTransferencia.setForeground(new java.awt.Color(255, 255, 255));
-        btnTransferencia.setText("Transferência");
-        btnTransferencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnTransferencia.setContentAreaFilled(false);
-        btnTransferencia.setFocusable(false);
-        btnTransferencia.addActionListener(this::btnTransferenciaActionPerformed);
-
         bntPerfil.setBackground(new java.awt.Color(0, 0, 0));
         bntPerfil.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         bntPerfil.setForeground(new java.awt.Color(255, 255, 255));
@@ -164,20 +155,16 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 26, Short.MAX_VALUE)
-                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(bntPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(85, 85, 85))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(bntPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -190,7 +177,7 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -206,18 +193,18 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                        .addGap(14, 14, 14)
                         .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1))
-                        .addGap(19, 19, 19))
+                        .addGap(0, 0, 0))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel2)))
                 .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -261,6 +248,15 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         txtTransacoes.setForeground(new java.awt.Color(0, 204, 204));
         txtTransacoes.setText("Últimas Transações");
 
+        btnTransferencia.setBackground(new java.awt.Color(0, 0, 0));
+        btnTransferencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnTransferencia.setForeground(new java.awt.Color(0, 0, 0));
+        btnTransferencia.setText("Transferência");
+        btnTransferencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnTransferencia.setContentAreaFilled(false);
+        btnTransferencia.setFocusable(false);
+        btnTransferencia.addActionListener(this::btnTransferenciaActionPerformed);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -270,19 +266,24 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(txtTransacoes))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(Label_Extrato)))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addGap(35, 35, 35)
+                            .addComponent(Label_Extrato)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addGap(70, 70, 70)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(Label_Extrato)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTransferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(Label_Extrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(txtTransacoes)
                 .addGap(18, 18, 18)
@@ -328,7 +329,9 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bntPerfilActionPerformed
 
     private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
-        // TODO add your handling code here:
+        TelaTransferencia telaTransferencia = new TelaTransferencia();
+        telaTransferencia.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnTransferenciaActionPerformed
 
     /**
@@ -353,7 +356,7 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaExtrato_Principal().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new TelaExtrato().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
