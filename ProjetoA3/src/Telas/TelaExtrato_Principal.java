@@ -261,7 +261,9 @@ public class TelaExtrato_Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPerfilActionPerformed
-        // TODO add your handling code here:
+        TelaModificar_Cliente telaModificar = new TelaModificar_Cliente();
+        telaModificar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bntPerfilActionPerformed
 
     private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed

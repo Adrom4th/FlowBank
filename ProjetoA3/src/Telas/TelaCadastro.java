@@ -165,14 +165,11 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         );
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Cadastre-se");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nome:");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Email:");
 
         btnCadastro.setBackground(new java.awt.Color(0, 0, 0));
@@ -189,7 +186,6 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
 
         btnCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnCancelar.setContentAreaFilled(false);
@@ -197,32 +193,26 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         btnCancelar.setMinimumSize(new java.awt.Dimension(66, 20));
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
-        txtSenha.setBackground(new java.awt.Color(255, 255, 255));
         txtSenha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtSenha.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtSenha.addActionListener(this::txtSenhaActionPerformed);
 
-        txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNome.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtNome.addActionListener(this::txtNomeActionPerformed);
 
-        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmail.addActionListener(this::txtEmailActionPerformed);
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Celular:");
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Data de Nascimento:");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Senha:");
 
         jButton1.setForeground(new java.awt.Color(0, 153, 255));
@@ -232,20 +222,16 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Confirmar senha: ");
 
-        txtConfirmar_Senha.setBackground(new java.awt.Color(255, 255, 255));
         txtConfirmar_Senha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtConfirmar_Senha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtConfirmar_Senha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtConfirmar_Senha.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtConfirmar_Senha.addActionListener(this::txtConfirmar_SenhaActionPerformed);
 
-        txtCelular.setBackground(new java.awt.Color(255, 255, 255));
         txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        txtData_Nascimento.setBackground(new java.awt.Color(255, 255, 255));
         txtData_Nascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -273,20 +259,12 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
                                     .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel4)
-<<<<<<< HEAD
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGap(401, 401, 401))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(0, 78, Short.MAX_VALUE))
-=======
                                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                                     .addComponent(jLabel1)
                                     .addComponent(txtCelular)
                                     .addComponent(txtData_Nascimento))
                                 .addGap(401, 401, 401)))
-                        .addGap(0, 72, Short.MAX_VALUE))
->>>>>>> 39e18c5368532757f8e529f1bb80ce70f5491400
+                        .addGap(0, 78, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(109, 109, 109)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
