@@ -15,6 +15,71 @@ public class TelaTransferencia extends javax.swing.JFrame {
    
     public TelaTransferencia() {
         initComponents();
+     // --- FAZ O ENTER FUNCIONAR COMO TAB EM TODOS OS CAMPOS DESTA TELA ---
+java.util.Set<java.awt.AWTKeyStroke> conjTeclas = new java.util.HashSet<>(
+    java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getDefaultFocusTraversalKeys(
+        java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS
+    )
+);
+
+// Adiciona a tecla ENTER na lista de comandos de pulo
+conjTeclas.add(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
+
+// Aplica a regra para os campos de texto e caixas de seleção da TelaTransferencia
+this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conjTeclas);
+txtChaveTransfEmail.setText("Digite a chave");
+txtChaveTransfEmail.setForeground(java.awt.Color.GRAY);
+
+// --- COMPORTAMENTO AO CLICAR E SAIR DO CAMPO ---
+txtChaveTransfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+    @Override
+    public void focusGained(java.awt.event.FocusEvent evt) {
+        // Quando o usuário clica no campo, se o texto for o padrão, ele limpa
+        if (txtChaveTransfEmail.getText().equals("Digite a chave")) {
+            txtChaveTransfEmail.setText("");
+            txtChaveTransfEmail.setForeground(java.awt.Color.BLACK); // Altere para WHITE se o seu fundo for escuro
+        }
+    }
+
+    @Override
+    public void focusLost(java.awt.event.FocusEvent evt) {
+        // Se o usuário clicar fora e não tiver digitado nada, o texto padrão volta
+        if (txtChaveTransfEmail.getText().trim().isEmpty()) {
+            txtChaveTransfEmail.setText("Digite a chave");
+            txtChaveTransfEmail.setForeground(java.awt.Color.GRAY);
+        }
+    }
+});
+// --- CONFIGURAÇÃO INICIAL DO VALOR ---
+txtValorPagar.setText("R$ 0,00");
+txtValorPagar.setHorizontalAlignment(javax.swing.JTextField.LEFT); // Alinha o texto à direita igual aos bancos
+
+// --- MÁSCARA MONETÁRIA DINÂMICA ---
+txtValorPagar.addKeyListener(new java.awt.event.KeyAdapter() {
+    @Override
+    public void keyReleased(java.awt.event.KeyEvent e) {
+        // Remove tudo o que não for número
+        String limpo = txtValorPagar.getText().replaceAll("[^0-9]", "");
+        
+        // Se o usuário apagar tudo, resgata o padrão
+        if (limpo.isEmpty()) {
+            limpo = "0";
+        }
+        
+        try {
+            // Converte para double jogando os centavos para as casas decimais corretas
+            double valor = Double.parseDouble(limpo) / 100.0;
+            
+            // Formata o número de volta para a moeda brasileira (R$)
+            java.text.NumberFormat nf = java.text.NumberFormat.getCurrencyInstance(new java.util.Locale("pt", "BR"));
+            String formatado = nf.format(valor);
+            
+            txtValorPagar.setText(formatado);
+        } catch (NumberFormatException ex) {
+            // Prevenção de erros de conversão
+        }
+    }
+});
     }
 
     public TelaTransferencia(Integer id) {
@@ -93,8 +158,6 @@ public class TelaTransferencia extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Samsung\\Downloads\\Adobe Express - file (2).jpg")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -138,6 +201,7 @@ public class TelaTransferencia extends javax.swing.JFrame {
 
         drpdwFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pix", " " }));
         drpdwFormaPagamento.setSelectedIndex(1);
+        drpdwFormaPagamento.addActionListener(this::drpdwFormaPagamentoActionPerformed);
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tipo de Transferência: ");
@@ -282,6 +346,10 @@ public class TelaTransferencia extends javax.swing.JFrame {
         telaExtrato.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarPgtoActionPerformed
+
+    private void drpdwFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drpdwFormaPagamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_drpdwFormaPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
