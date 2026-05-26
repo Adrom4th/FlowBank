@@ -377,7 +377,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
             mensagem += "- Nome\n";
         }
         if (email.equals("")) {
-            mensagem += "- Email\n[";
+            mensagem += "- Email\n";
         }
         if (celular.equals("")) {
             mensagem += "- Celular\n";
