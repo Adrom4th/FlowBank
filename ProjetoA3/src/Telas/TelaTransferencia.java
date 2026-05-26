@@ -21,6 +21,10 @@ public class TelaTransferencia extends javax.swing.JFrame {
         initComponents();
         
         this.id = id;
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente_FlowBank cliente = clienteDAO.buscarClientePorId(id);
+        lblNome.setText(cliente.getNome());
+        lblId.setText(String.valueOf(cliente.getId()));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -42,6 +46,7 @@ public class TelaTransferencia extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtValorPagar = new javax.swing.JTextField();
         btnPagar = new javax.swing.JButton();
+        btnCancelarPgto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,24 +156,27 @@ public class TelaTransferencia extends javax.swing.JFrame {
         btnPagar.setText("Pagar");
         btnPagar.addActionListener(this::btnPagarActionPerformed);
 
+        btnCancelarPgto.setText("Cancelar");
+        btnCancelarPgto.addActionListener(this::btnCancelarPgtoActionPerformed);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(83, 83, 83)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtValorPagar)
+                        .addComponent(txtChaveTransfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3)
+                        .addComponent(drpdwFormaPagamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtValorPagar)
-                            .addComponent(txtChaveTransfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(drpdwFormaPagamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCancelarPgto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -186,9 +194,11 @@ public class TelaTransferencia extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtValorPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarPgto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -267,6 +277,12 @@ public class TelaTransferencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPagarActionPerformed
 
+    private void btnCancelarPgtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPgtoActionPerformed
+        TelaExtrato telaExtrato = new TelaExtrato(this.id);
+        telaExtrato.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarPgtoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -294,6 +310,7 @@ public class TelaTransferencia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntPerfil;
+    private javax.swing.JButton btnCancelarPgto;
     private javax.swing.JButton btnPagar;
     private javax.swing.JComboBox<String> drpdwFormaPagamento;
     private javax.swing.JLabel jLabel1;
