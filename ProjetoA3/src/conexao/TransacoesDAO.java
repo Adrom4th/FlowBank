@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Timestamp;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class TransacoesDAO {
     private final Connection conexao;
@@ -34,6 +35,7 @@ public class TransacoesDAO {
                     extrato.setId_Cliente(rs.getInt("id_cliente"));
                     extrato.setData_Transacao(rs.getTimestamp("data_transacao"));
                     extrato.setValor_Transacao(rs.getBigDecimal("valor_transacao"));
+                    extrato.setForma_Pagamento(rs.getString("forma_pagamento"));
                     extrato.setTipo_Transacao(rs.getString("tipo_transacao"));
                     lista.add(extrato);                  
                 }
@@ -47,28 +49,54 @@ public class TransacoesDAO {
         return lista;
     }
     
-    public void transferencia(int id, double valor) {
-        String sql = "INSERT INTO extrato (id_cliente, valor_transacao, tipo_transacao) VALUES (?,?,?)";
+    public void transferencia (int idRemetente, int idDestinatario, BigDecimal valor, String formaPagamento) {
+        String sql = "INSERT INTO extrato (id_cliente, id_transferencia, tipo_transacao, valor_transacao, forma_pagamento) VALUES (?,?,?,?,?)";
         
-        try (PreparedStatement ps = conexao.prepareStatement (sql)) {
-            double resultado = verificarSaldo(id);
-            if(resultado >= valor) {
-                ps.setInt(1, id);
-                ps.setDouble(2,valor);
+        // UUID garante que os dois registros ficam vinculados
+        UUID idTransferencia = UUID.randomUUID();
+        Timestamp horaAtual = new Timestamp(System.currentTimeMillis());
+        
+        try {
+            conexao.setAutoCommit(false); //Inicia transação. Ou ambos inserem ou nenhum
+            
+            try (PreparedStatement ps = conexao.prepareStatement (sql)) {
+                // Registro 1:  Saída para o remetente           
+                ps.setInt(1, idRemetente);
+                ps.setObject(2, idTransferencia);
                 ps.setString(3, "Saída");
-                ps.execute();
+                ps.setBigDecimal(4, valor);
+                ps.setString(5, formaPagamento);
+                ps.executeUpdate();
+                
+                // Registro 2: Entrada para o destinatário
+                ps.setInt(1, idDestinatario);
+                ps.setObject(2, idTransferencia);
+                ps.setString(3, "Entrada");
+                ps.setBigDecimal(4, valor);
+                ps.setString(5, formaPagamento);
+                ps.executeUpdate();
+                
+                conexao.commit(); //Confirma os dois registros juntos
+                JOptionPane.showMessageDialog(null, "Transferência realizada com sucesso!");
+                
             }
-            else {
-                JOptionPane.showMessageDialog(null, "Saldo Insuficiente.");
+            catch (SQLException exception) {
+                conexao.rollback(); //Se qualquer insert falhar, desfaz tudo
+                JOptionPane.showMessageDialog(null, "Erro ao realizar a transferência!");
+                throw new RuntimeException(exception);
             }
         }
         catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, "Erro ao realizar a transferencia.");
+            JOptionPane.showMessageDialog(null, "Erro de conexão interna.");
             throw new RuntimeException(exception);
         }
-    }
-    
-    public double verificarSaldo(int id) {
-        
+        finally {
+            try {
+                conexao.setAutoCommit(true); //Restaura o comportamento padrão
+            }
+            catch (SQLException exception) {
+                throw new RuntimeException(exception);
+            }
+        }
     }
 }

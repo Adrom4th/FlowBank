@@ -13,19 +13,17 @@ import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
 
 public class TelaExtrato extends javax.swing.JFrame {
-    
+    private Integer id;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaExtrato.class.getName());
 
-    /**
-     * Creates new form TelaPrincipal_Extrato
-     */
+    
     public TelaExtrato() {
         initComponents();
     }
     
     public TelaExtrato(Integer id) {
         initComponents();
-        
+        this.id = id;
         ClienteDAO clienteDAO = new ClienteDAO();
         Cliente_FlowBank cliente = clienteDAO.buscarClientePorId(id);
         lblId.setText(String.valueOf(cliente.getId()));
@@ -37,17 +35,18 @@ public class TelaExtrato extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblExtrato.getModel();
         modelo.setRowCount(0);
         for (TransacoesExtrato_FlowBank transacoes : lista) {
-            String formatoData = "dd/MM/yyyy HH:mm";
+            String formatoData = "dd/MM/yyyy HH:mm:ss";
             SimpleDateFormat dataConvertida = new SimpleDateFormat(formatoData);
             
-            Integer Id_Transacao = transacoes.getId_Transacao();
-            String Tipo = transacoes.getTipo_Transacao();
-            BigDecimal Valor = transacoes.getValor_Transacao();
-            String ValorFormatado = String.format("R$ %.2f", Valor.doubleValue());
+            Integer id_Transacao = transacoes.getId_Transacao();
+            String tipo = transacoes.getTipo_Transacao();
+            BigDecimal valor = transacoes.getValor_Transacao();
+            String valorFormatado = String.format("R$ %.2f", valor.doubleValue());
+            String formaPagamento = transacoes.getForma_Pagamento();
             
-            String Data = dataConvertida.format(transacoes.getData_Transacao());
+            String data = dataConvertida.format(transacoes.getData_Transacao());
             
-            modelo.addRow(new Object[] {Id_Transacao, Tipo, ValorFormatado, Data});
+            modelo.addRow(new Object[] {id_Transacao, tipo, valorFormatado, formaPagamento, data});
         }
         
         ((javax.swing.table.DefaultTableCellRenderer) tblExtrato.getTableHeader().getDefaultRenderer())
@@ -62,10 +61,11 @@ public class TelaExtrato extends javax.swing.JFrame {
         javax.swing.table.DefaultTableCellRenderer centro = new javax.swing.table.DefaultTableCellRenderer();
         centro.setHorizontalAlignment(javax.swing.JLabel.CENTER);
 
-        tblExtrato.getColumnModel().getColumn(0).setCellRenderer(centro);  // Id_Transacao
+        tblExtrato.getColumnModel().getColumn(0).setCellRenderer(centro);   // Id_Transacao
         tblExtrato.getColumnModel().getColumn(1).setCellRenderer(esquerda); // Tipo
         tblExtrato.getColumnModel().getColumn(2).setCellRenderer(direita);  // Valor
-        tblExtrato.getColumnModel().getColumn(3).setCellRenderer(direita);   // Data
+        tblExtrato.getColumnModel().getColumn(3).setCellRenderer(esquerda); // Forma pagamento
+        tblExtrato.getColumnModel().getColumn(4).setCellRenderer(direita);  // Data
         
         ajustarAlturaDaTabela();     
     }
@@ -198,8 +198,7 @@ public class TelaExtrato extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, 0))
+                            .addComponent(jLabel1)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2)))
@@ -216,11 +215,11 @@ public class TelaExtrato extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id_Transacao", "Tipo", "Valor", "Data"
+                "Id_Transacao", "Tipo", "Valor", "Forma Pagamento", "Data"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -231,7 +230,6 @@ public class TelaExtrato extends javax.swing.JFrame {
         tblExtrato.setEnabled(false);
         tblExtrato.setGridColor(new java.awt.Color(0, 0, 0));
         tblExtrato.setMaximumSize(null);
-        tblExtrato.setPreferredSize(null);
         tblExtrato.setSelectionBackground(new java.awt.Color(0, 0, 0));
         tblExtrato.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblExtrato.setShowHorizontalLines(true);
@@ -329,7 +327,7 @@ public class TelaExtrato extends javax.swing.JFrame {
     }//GEN-LAST:event_bntPerfilActionPerformed
 
     private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
-        TelaTransferencia telaTransferencia = new TelaTransferencia();
+        TelaTransferencia telaTransferencia = new TelaTransferencia(this.id);
         telaTransferencia.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnTransferenciaActionPerformed
