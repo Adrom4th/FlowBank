@@ -50,6 +50,14 @@ public class TransacoesDAO {
     }
     
     public void transferencia (int idRemetente, int idDestinatario, BigDecimal valor, String formaPagamento) {
+        
+        BigDecimal saldoAtual = verificarSaldo(idRemetente);
+        
+        if (saldoAtual.compareTo(valor) < 0) {
+            JOptionPane.showMessageDialog(null, "Saldo insuficiente.");
+            return;
+        }
+                
         String sql = "INSERT INTO extrato (id_cliente, id_transferencia, tipo_transacao, valor_transacao, forma_pagamento) VALUES (?,?,?,?,?)";
         
         // UUID garante que os dois registros ficam vinculados
@@ -98,5 +106,29 @@ public class TransacoesDAO {
                 throw new RuntimeException(exception);
             }
         }
+    }
+    
+    public BigDecimal verificarSaldo (int id_Cliente) {
+        String sql = "SELECT COALESCE( SUM ("
+                        + "CASE "
+                            + "WHEN tipo_transacao = 'Entrada' THEN valor_transacao "
+                            + "WHEN tipo_transacao = 'Saída' THEN -valor_transacao "
+                        + "END "
+                    + "), 0) AS saldo FROM extrato WHERE id_cliente = ?";
+        
+        try (PreparedStatement ps = conexao.prepareStatement (sql)) {
+            ps.setInt(1, id_Cliente);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return(rs.getBigDecimal("saldo"));
+                }
+            }
+        }
+        catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar saldo");
+            throw new RuntimeException(exception);
+        }
+        return BigDecimal.ZERO;
     }
 }
