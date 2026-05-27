@@ -2,16 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/HP_/Documents/Projetos%20USJT/FlowBank_A3/ProjetoA3/src/Telas/TelaCadastro.java</file>
-=======
-            <file>file:/C:/Users/Nicholas/Desktop/Ads/SJT/FlowBank_A3/ProjetoA3/src/Telas/TelaPrincipal_Extrato.java</file>
->>>>>>> 39e18c5368532757f8e529f1bb80ce70f5491400
+            <file>file:/C:/Users/HP_/Documents/Projetos%20USJT/FlowBank_A3/ProjetoA3/src/Telas/TelaModificar_Cliente.java</file>
+            <file>file:/C:/Users/HP_/Documents/Projetos%20USJT/FlowBank_A3/ProjetoA3/src/conexao/ClienteDAO.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 27cf2dcaa23187be4d8d55a567784f3d4d90e13e
     </open-files>
 </project-private>

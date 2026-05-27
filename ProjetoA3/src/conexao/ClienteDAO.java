@@ -116,19 +116,22 @@ public class ClienteDAO {
         }
     }
     
-    public Cliente_FlowBank modificarCliente(Cliente_FlowBank cliente) {
+    public Cliente_FlowBank modificarCliente(Cliente_FlowBank cliente) throws SQLException {
         String sql = "UPDATE clientes SET nome=?, email=?, celular=?, data_nascimento=?, senha=?, WHERE id=?";
         
-        try {
-            System.out.println("Try Modificar");
-            PreparedStatement ps = conexao.prepareStatement(sql);
+        try (PreparedStatement ps = conexao.prepareStatement(sql);){
             ps.setString(1, cliente.getNome());
-            ps.setString(2, cliente.getCelular());
-            ps.setString(3, cliente.getEmail());
-            ps.setDate(4, cliente.getdata_nascimento());
+            ps.setString(2, cliente.getEmail());
+            ps.setString(3, cliente.getCelular());
+            ps.setDate(4, cliente.getData_Nascimento());
             ps.setString(5, cliente.getSenha());
             ps.setInt(6, cliente.getId());
             ps.execute();
         }
-    }
-}
+        catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, "Falha ao modificar cliente!");
+            throw new RuntimeException(exception);
+        }
+    
+
+

@@ -4,6 +4,10 @@
  */
 package Telas;
 
+import conexao.ClienteDAO;
+import conexao.Cliente_FlowBank;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP_
@@ -47,10 +51,10 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
 });
 
 // --- MÁSCARA EM TEMPO REAL PARA A DATA (txtData_Nascimento) ---
-txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     @Override
     public void keyReleased(java.awt.event.KeyEvent e) {
-        String texto = txtData_Nascimento.getText().replaceAll("[^0-9]", "");
+        String texto = txtDataNascimento.getText().replaceAll("[^0-9]", "");
         int qtd = texto.length();
 
         // Limita o máximo para 8 dígitos (DDMMAAAA)
@@ -70,7 +74,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
             }
         }
 
-        txtData_Nascimento.setText(texto);
+        txtDataNascimento.setText(texto);
     }
 });
     }
@@ -93,7 +97,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         txtEmail = new javax.swing.JTextField();
         txtCelular = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
-        txtData_Nascimento = new javax.swing.JTextField();
+        txtDataNascimento = new javax.swing.JTextField();
         lblEdite = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
@@ -132,34 +136,25 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(txtEmail))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(txtCelular))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(txtData_Nascimento))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtSenha)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblSenha)
-                                        .addComponent(lblDataNascimento)
-                                        .addComponent(lblCelular)
-                                        .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblNome))
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(btnCancelar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                                    .addComponent(btnConfirmar))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEmail)
+                            .addComponent(txtCelular)
+                            .addComponent(txtDataNascimento)
+                            .addComponent(txtSenha)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSenha)
+                                    .addComponent(lblDataNascimento)
+                                    .addComponent(lblCelular)
+                                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblNome))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                                .addComponent(btnConfirmar))
                             .addComponent(txtNome)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
@@ -186,7 +181,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDataNascimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtData_Nascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,21 +207,15 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        String nome = txtNome.getText().trim();
-        String email = txtEmail.getText().trim();
-        String celular = txtCelular.getText().trim();
-        String dataNascimento = txtData_Nascimento.getText().trim();
-        String senha = new String(txtSenha.getPassword());
+        Cliente_FlowBank cliente = new Cliente_FlowBank();
+        cliente.setNome(txtNome.getText());
+        cliente.setEmail(txtEmail.getText());
+        cliente.setCelular(txtCelular.getText());
+        cliente.setDataNascimento(txtDataNascimento.getText());
+        cliente.setSenha(txtSenha.getPassword());
         
-        String mensagem = "";
-        
-        if (nome.equals("")){
-            mensagem += "-Nome\n";
-        }
-        if (email.equals("")){
-            mensagem += "-Email\n";
-        }
-        
+        ClienteDAO clienteDAO = new ClienteDAO();
+        clienteDAO.modificarCliente();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
@@ -264,7 +253,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JTextField txtCelular;
-    private javax.swing.JTextField txtData_Nascimento;
+    private javax.swing.JTextField txtDataNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtSenha;
