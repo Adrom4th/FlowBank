@@ -1,4 +1,4 @@
-    
+     
 package Telas;
 
 import java.text.DateFormat;
@@ -405,7 +405,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
                     cliente.setCelular(celular);
                     cliente.setSenha(senha);
                     
-                    DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                     
                     Date dataNascimento = new Date(df.parse(data_nascimento).getTime());
                     cliente.setData_Nascimento(dataNascimento);
