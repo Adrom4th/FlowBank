@@ -213,9 +213,16 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         cliente.setCelular(txtCelular.getText());
         cliente.setDataNascimento(txtDataNascimento.getText());
         cliente.setSenha(txtSenha.getPassword());
-        
         ClienteDAO clienteDAO = new ClienteDAO();
-        clienteDAO.modificarCliente();
+        
+        if (clienteDAO.modificarCliente(cliente)) {
+            JOptionPane.showMessageDialog(null,"Dados Modificados com sucesso!");
+            
+            this.dispose();
+            TelaExtrato_Principal telaExtrato = new TelaExtrato_Principal();
+            telaExtrato.setVisible(true);
+        }
+        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
