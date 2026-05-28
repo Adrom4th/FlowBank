@@ -355,9 +355,6 @@ public class TelaTransferencia extends javax.swing.JFrame {
             if (emailDestinatario.equals("") || emailDestinatario.equals("Digite a chave")) {
                 mensagem += "- Chave de Transferência\n";
             }
-            if (valorTexto.equals("R$ 0,00")) {
-                mensagem += "- Valor a pagar\n";
-            }
             if (!mensagem.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Os seguintes campos precisam ser preenchidos:\n"+mensagem);
                 return;
