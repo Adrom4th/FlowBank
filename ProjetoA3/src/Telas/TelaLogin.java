@@ -284,9 +284,8 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-       String email, senha;
-       email = txtEmail.getText();
-       senha = new String (txtSenha.getPassword());
+       String email = txtEmail.getText();
+       String senha = new String (txtSenha.getPassword());
        ClienteDAO clienteDAO = new ClienteDAO();
        
        if (clienteDAO.loginCliente(email, senha)) {
