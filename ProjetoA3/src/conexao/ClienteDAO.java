@@ -127,11 +127,13 @@ public class ClienteDAO {
             ps.setString(5, cliente.getSenha());
             ps.setInt(6, cliente.getId());
             ps.execute();
+            
+            return cliente;
         }
         catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, "Falha ao modificar cliente!");
             throw new RuntimeException(exception);
         }
-    
-
+    }
+}
 

@@ -8,17 +8,12 @@ import conexao.ClienteDAO;
 import conexao.Cliente_FlowBank;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author HP_
- */
+
 public class TelaModificar_Cliente extends javax.swing.JFrame {
-    
+    public Integer id;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaModificar_Cliente.class.getName());
 
-    /**
-     * Creates new form TelaModificar_Cliente
-     */
+   
     public TelaModificar_Cliente() {
         initComponents();
         txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -78,7 +73,19 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     }
 });
     }
-
+    
+    public TelaModificar_Cliente(Integer id) {
+        initComponents();
+        
+        this.id = id;
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente_FlowBank cliente = clienteDAO.buscarClientePorId(id);
+        txtNome.setText(cliente.getNome());
+        txtEmail.setText(cliente.getEmail());
+        txtCelular.setText(cliente.getCelular());
+        txtDataNascimento.setText(String.valueOf(cliente.getData_Nascimento()));
+        txtSenha.setText(cliente.getSenha());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,6 +110,7 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         btnConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(956, 675));
 
         lblNome.setText("Nome:");
 
@@ -201,28 +209,24 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        TelaExtrato_Principal telaExtrato = new TelaExtrato_Principal();
+        TelaExtrato telaExtrato = new TelaExtrato();
         telaExtrato.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        ClienteDAO clienteDAO = new ClienteDAO();
         Cliente_FlowBank cliente = new Cliente_FlowBank();
         cliente.setNome(txtNome.getText());
         cliente.setEmail(txtEmail.getText());
         cliente.setCelular(txtCelular.getText());
-        cliente.setDataNascimento(txtDataNascimento.getText());
-        cliente.setSenha(txtSenha.getPassword());
-        ClienteDAO clienteDAO = new ClienteDAO();
         
-        if (clienteDAO.modificarCliente(cliente)) {
-            JOptionPane.showMessageDialog(null,"Dados Modificados com sucesso!");
-            
-            this.dispose();
-            TelaExtrato_Principal telaExtrato = new TelaExtrato_Principal();
-            telaExtrato.setVisible(true);
-        }
+        String dataTexto = txtDataNascimento.getText(); // ex: "2000-12-31"
+        java.sql.Date dataNascimento = java.sql.Date.valueOf(dataTexto);
+        cliente.setData_Nascimento(dataNascimento);;
         
+        cliente.setSenha(txtSenha.getText());
+       
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**

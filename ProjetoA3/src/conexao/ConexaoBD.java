@@ -18,7 +18,7 @@ public class ConexaoBD {
             return DriverManager.getConnection(URL,USERNAME,PASSWORD);           
         }
         catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, "Erro ao se conenctar ao Banco de Dados");
+            JOptionPane.showMessageDialog(null, "Erro de Conexão");
             throw new RuntimeException (exception);
         }
         catch (ClassNotFoundException exception) {
