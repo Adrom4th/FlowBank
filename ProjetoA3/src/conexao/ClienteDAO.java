@@ -99,6 +99,7 @@ public class ClienteDAO {
                     cliente.setId(rs.getInt("id"));
                     cliente.setNome(rs.getString("nome"));
                     cliente.setEmail(rs.getString("email"));
+                    cliente.setCelular(rs.getString("celular"));
                     cliente.setData_Nascimento(rs.getDate("data_nascimento"));
                     cliente.setSenha(rs.getString("senha"));
             

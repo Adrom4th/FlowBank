@@ -343,7 +343,7 @@ public class TelaExtrato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        TelaModificar_Cliente telaModificar = new TelaModificar_Cliente();
+        TelaModificar_Cliente telaModificar = new TelaModificar_Cliente(this.id);
         telaModificar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPerfilActionPerformed

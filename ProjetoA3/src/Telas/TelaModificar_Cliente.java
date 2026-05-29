@@ -6,18 +6,41 @@ package Telas;
 
 import conexao.ClienteDAO;
 import conexao.Cliente_FlowBank;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import java.text.ParseException;
 
 
 public class TelaModificar_Cliente extends javax.swing.JFrame {
     public Integer id;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaModificar_Cliente.class.getName());
 
+   public TelaModificar_Cliente(Integer id) {
+        initComponents();
+        
+        this.id = id;
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente_FlowBank cliente = clienteDAO.buscarClientePorId(id);
+        txtNome.setText(cliente.getNome());
+        txtEmail.setText(cliente.getEmail());
+        txtCelular.setText(cliente.getCelular());
+   
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        txtDataNascimento.setText(df.format(cliente.getData_Nascimento()));
+   
+        txtSenha.setText(cliente.getSenha());
+        
+        lblNomeCabeçalho.setText(cliente.getNome());
+        lblId.setText(String.valueOf(cliente.getId()));
+    }
    
     public TelaModificar_Cliente() {
         initComponents();
         txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
-    @Override
+        @Override
+        
     public void keyReleased(java.awt.event.KeyEvent e) {
         // Remove tudo o que não for número para recalcular a máscara corretamente
         String texto = txtCelular.getText().replaceAll("[^0-9]", "");
@@ -45,9 +68,10 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
     }
 });
 
-// --- MÁSCARA EM TEMPO REAL PARA A DATA (txtData_Nascimento) ---
-txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
-    @Override
+        // --- MÁSCARA EM TEMPO REAL PARA A DATA (txtData_Nascimento) ---
+        txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+        @Override
+        
     public void keyReleased(java.awt.event.KeyEvent e) {
         String texto = txtDataNascimento.getText().replaceAll("[^0-9]", "");
         int qtd = texto.length();
@@ -72,19 +96,6 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         txtDataNascimento.setText(texto);
     }
 });
-    }
-    
-    public TelaModificar_Cliente(Integer id) {
-        initComponents();
-        
-        this.id = id;
-        ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente_FlowBank cliente = clienteDAO.buscarClientePorId(id);
-        txtNome.setText(cliente.getNome());
-        txtEmail.setText(cliente.getEmail());
-        txtCelular.setText(cliente.getCelular());
-        txtDataNascimento.setText(String.valueOf(cliente.getData_Nascimento()));
-        txtSenha.setText(cliente.getSenha());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,14 +122,10 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         lblSenha = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
-        lblNome1 = new javax.swing.JLabel();
+        lblNomeCabeçalho = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnPerfil = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblSaldoAtual = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(814, 675));
@@ -254,10 +261,10 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
 
         jPanel2.setBackground(new java.awt.Color(2, 3, 5));
 
-        lblNome1.setBackground(new java.awt.Color(255, 255, 255));
-        lblNome1.setForeground(new java.awt.Color(255, 255, 255));
-        lblNome1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblNome1.setText("Nome_Usuario");
+        lblNomeCabeçalho.setBackground(new java.awt.Color(255, 255, 255));
+        lblNomeCabeçalho.setForeground(new java.awt.Color(255, 255, 255));
+        lblNomeCabeçalho.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNomeCabeçalho.setText("Nome_Usuario");
 
         lblId.setBackground(new java.awt.Color(255, 255, 255));
         lblId.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,42 +274,6 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         jLabel1.setForeground(new java.awt.Color(0, 204, 204));
         jLabel1.setText("Id:");
 
-        jPanel3.setOpaque(false);
-
-        btnPerfil.setBackground(new java.awt.Color(0, 0, 0));
-        btnPerfil.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnPerfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnPerfil.setText("Editar Perfil");
-        btnPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnPerfil.setContentAreaFilled(false);
-        btnPerfil.setFocusable(false);
-        btnPerfil.addActionListener(this::btnPerfilActionPerformed);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addComponent(btnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(btnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Saldo");
-
-        lblSaldoAtual.setForeground(new java.awt.Color(255, 255, 255));
-        lblSaldoAtual.setText("Saldo_Atual");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -310,19 +281,13 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(lblSaldoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                .addGap(420, 420, 420)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblId))
-                    .addComponent(lblNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNomeCabeçalho, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
         jPanel2Layout.setVerticalGroup(
@@ -331,20 +296,15 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                        .addComponent(lblNomeCabeçalho, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSaldoAtual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 73, Short.MAX_VALUE)
                         .addComponent(jLabel2)))
                 .addContainerGap())
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -370,7 +330,7 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        TelaExtrato telaExtrato = new TelaExtrato();
+        TelaExtrato telaExtrato = new TelaExtrato(this.id);
         telaExtrato.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -383,18 +343,19 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         cliente.setCelular(txtCelular.getText());
         
         String dataTexto = txtDataNascimento.getText(); // ex: "2000-12-31"
-        java.sql.Date dataNascimento = java.sql.Date.valueOf(dataTexto);
-        cliente.setData_Nascimento(dataNascimento);;
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date dataConvertida = new Date(df.parse(dataTexto).getTime());
+            cliente.setData_Nascimento(dataConvertida); 
+        }
+        catch (ParseException exception) {
+            JOptionPane.showMessageDialog(null, "Erro ao importar data de nascimento!");
+            return;
+        }
         
         cliente.setSenha(txtSenha.getText());
        
     }//GEN-LAST:event_btnConfirmarActionPerformed
-
-    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        TelaModificar_Cliente telaModificar = new TelaModificar_Cliente();
-        telaModificar.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -428,13 +389,10 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblDataNascimento;
@@ -442,8 +400,7 @@ txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblNome1;
-    private javax.swing.JLabel lblSaldoAtual;
+    private javax.swing.JLabel lblNomeCabeçalho;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtDataNascimento;

@@ -14,7 +14,7 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 
 public class TelaTransferencia extends javax.swing.JFrame {
-    private Integer id;
+    public Integer id;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaTransferencia.class.getName());
 
    
