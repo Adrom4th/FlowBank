@@ -232,8 +232,6 @@ public class TelaExtrato extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblExtrato.setBackground(new java.awt.Color(255, 255, 255));
-        tblExtrato.setForeground(new java.awt.Color(0, 0, 0));
         tblExtrato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -262,7 +260,6 @@ public class TelaExtrato extends javax.swing.JFrame {
 
         Label_Extrato.setBackground(new java.awt.Color(0, 0, 0));
         Label_Extrato.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        Label_Extrato.setForeground(new java.awt.Color(0, 0, 0));
         Label_Extrato.setText("Extrato");
 
         txtTransacoes.setBackground(new java.awt.Color(204, 204, 204));
@@ -272,7 +269,6 @@ public class TelaExtrato extends javax.swing.JFrame {
 
         btnTransferencia.setBackground(new java.awt.Color(0, 0, 0));
         btnTransferencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnTransferencia.setForeground(new java.awt.Color(0, 0, 0));
         btnTransferencia.setText("Transferência");
         btnTransferencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnTransferencia.setContentAreaFilled(false);
