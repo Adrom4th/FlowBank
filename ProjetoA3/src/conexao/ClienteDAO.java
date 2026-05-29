@@ -118,7 +118,7 @@ public class ClienteDAO {
     }
     
     public Cliente_FlowBank modificarCliente(Cliente_FlowBank cliente) throws SQLException {
-        String sql = "UPDATE clientes SET nome=?, email=?, celular=?, data_nascimento=?, senha=?, WHERE id=?";
+        String sql = "UPDATE clientes SET nome=?, email=?, celular=?, data_nascimento=?, senha=? WHERE id=?";
         
         try (PreparedStatement ps = conexao.prepareStatement(sql);){
             ps.setString(1, cliente.getNome());

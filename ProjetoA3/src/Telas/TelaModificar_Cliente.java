@@ -341,7 +341,7 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         cliente.setEmail(txtEmail.getText());
         cliente.setCelular(txtCelular.getText());
         
-        String dataTexto = txtDataNascimento.getText(); // ex: "2000-12-31"
+        String dataTexto = txtDataNascimento.getText(); 
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date dataConvertida = new Date(df.parse(dataTexto).getTime());
@@ -357,11 +357,14 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         
         try {
             clienteDAO.modificarCliente(cliente);
-        JOptionPane.showMessageDialog(null, "Dados modificados com sucesso!");
-        this.dispose();
+            JOptionPane.showMessageDialog(null, "Dados modificados com sucesso!");
+            TelaLogin telaLogin = new TelaLogin();
+            telaLogin.setVisible(true);
+            this.dispose();
         }
         catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Erro ao modificar: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao modificar dados");
+            throw new RuntimeException(e);
         }
         
        
