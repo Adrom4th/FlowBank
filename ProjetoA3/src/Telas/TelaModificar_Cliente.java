@@ -11,7 +11,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.text.ParseException;
-
+import java.sql.SQLException;
 
 public class TelaModificar_Cliente extends javax.swing.JFrame {
     public Integer id;
@@ -137,9 +137,7 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         lblEdite.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
         lblEdite.setText("Edite");
 
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
@@ -152,31 +150,26 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
 
         lblNome.setText("Nome:");
 
-        txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNome.setPreferredSize(new java.awt.Dimension(64, 17));
         txtNome.addActionListener(this::txtNomeActionPerformed);
 
         lblEmail.setText("Email:");
 
-        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmail.addActionListener(this::txtEmailActionPerformed);
 
         lblCelular.setText("Celular:");
 
-        txtCelular.setBackground(new java.awt.Color(255, 255, 255));
         txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblDataNascimento.setText("Data de Nascimento:");
 
-        txtDataNascimento.setBackground(new java.awt.Color(255, 255, 255));
         txtDataNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblSenha.setText("Senha:");
         lblSenha.setToolTipText("");
 
-        txtSenha.setBackground(new java.awt.Color(255, 255, 255));
         txtSenha.setText("jPasswordField1");
         txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -354,6 +347,17 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         }
         
         cliente.setSenha(txtSenha.getText());
+        cliente.setId(this.id);
+        
+        try {
+            clienteDAO.modificarCliente(cliente);
+        JOptionPane.showMessageDialog(null, "Dados modificados com sucesso!");
+        this.dispose();
+        }
+        catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao modificar: " + e.getMessage());
+        }
+        
        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
