@@ -112,7 +112,7 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
         txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(0, 0, 0));
-        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txtEmail.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         txtEmail.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -134,7 +134,7 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
         txtSenha.setBackground(new java.awt.Color(255, 255, 255));
         txtSenha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtSenha.setForeground(new java.awt.Color(0, 0, 0));
-        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtSenha.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +147,7 @@ this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
         btnCancelar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnCancelar.setContentAreaFilled(false);
         btnCancelar.setMaximumSize(new java.awt.Dimension(66, 20));
         btnCancelar.setMinimumSize(new java.awt.Dimension(66, 20));

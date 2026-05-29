@@ -2,13 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/C:/Users/HP_/Documents/Projetos%20USJT/FlowBank_A3/ProjetoA3/src/Telas/TelaModificar_Cliente.java</file>
-            <file>file:/C:/Users/HP_/Documents/Projetos%20USJT/FlowBank_A3/ProjetoA3/src/conexao/ClienteDAO.java</file>
+            <file>file:/C:/ProjetoFlowBank_A3/ProjetoA3/src/conexao/ClienteDAO.java</file>
+            <file>file:/C:/ProjetoFlowBank_A3/ProjetoA3/src/Telas/TelaCadastro.java</file>
+            <file>file:/C:/ProjetoFlowBank_A3/ProjetoA3/src/conexao/Cliente_FlowBank.java</file>
+            <file>file:/C:/ProjetoFlowBank_A3/ProjetoA3/src/Telas/TelaExtrato.java</file>
+            <file>file:/C:/ProjetoFlowBank_A3/ProjetoA3/src/Telas/TelaTransferencia.java</file>
+            <file>file:/C:/ProjetoFlowBank_A3/ProjetoA3/src/Telas/TelaLogin.java</file>
+            <file>file:/C:/ProjetoFlowBank_A3/ProjetoA3/src/Telas/TelaModificar_Cliente.java</file>
         </group>
-=======
-        <group/>
->>>>>>> c8d0674e521c8ef60aac5a06d1dbdad018b1ea57
     </open-files>
 </project-private>

@@ -23,73 +23,73 @@ public class TelaCadastro extends javax.swing.JFrame {
     public TelaCadastro() {
         initComponents();
         java.util.Set<java.awt.AWTKeyStroke> conjTeclas = new java.util.HashSet<>(
-    java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getDefaultFocusTraversalKeys(
-        java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS
-    )
-);
+        java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getDefaultFocusTraversalKeys(
+        java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
 
-// Adiciona a tecla ENTER na lista de teclas que passam para o próximo campo
-conjTeclas.add(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
+        // Adiciona a tecla ENTER na lista de teclas que passam para o próximo campo
+        conjTeclas.add(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
 
-// Aplica essa nova regra globalmente para todos os componentes desta janela
-this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conjTeclas);
+        // Aplica essa nova regra globalmente para todos os componentes desta janela
+        this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conjTeclas);
 
         txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
-    @Override
-    public void keyReleased(java.awt.event.KeyEvent e) {
-        // Remove tudo o que não for número para recalcular a máscara corretamente
-        String texto = txtCelular.getText().replaceAll("[^0-9]", "");
-        int qtd = texto.length();
+        @Override
+        
+        public void keyReleased(java.awt.event.KeyEvent e) {
+            // Remove tudo o que não for número para recalcular a máscara corretamente
+            String texto = txtCelular.getText().replaceAll("[^0-9]", "");
+            int qtd = texto.length();
 
-        // Limita o máximo de caracteres para 11 dígitos (DDD + 9 dígitos)
-        if (qtd > 11) {
-            texto = texto.substring(0, 11);
-            qtd = 11;
-        }
-
-        // Aplica a formatação dinamicamente de acordo com a quantidade de números
-        if (qtd > 0) {
-            if (qtd <= 2) {
-                texto = "(" + texto;
-            } else if (qtd <= 7) {
-                texto = "(" + texto.substring(0, 2) + ") " + texto.substring(2);
-            } else {
-                texto = "(" + texto.substring(0, 2) + ") " + texto.substring(2, 7) + "-" + texto.substring(7);
+            // Limita o máximo de caracteres para 11 dígitos (DDD + 9 dígitos)
+            if (qtd > 11) {
+                texto = texto.substring(0, 11);
+                qtd = 11;
             }
-        }
+
+            // Aplica a formatação dinamicamente de acordo com a quantidade de números
+            if (qtd > 0) {
+                if (qtd <= 2) {
+                    texto = "(" + texto;
+                } else if (qtd <= 7) {
+                    texto = "(" + texto.substring(0, 2) + ") " + texto.substring(2);
+                } else {
+                    texto = "(" + texto.substring(0, 2) + ") " + texto.substring(2, 7) + "-" + texto.substring(7);
+                }
+            }
         
         // Atualiza o campo com a máscara aplicada e joga o cursor para o final
         txtCelular.setText(texto);
-    }
-});
-
-// --- MÁSCARA EM TEMPO REAL PARA A DATA (txtData_Nascimento) ---
-txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
-    @Override
-    public void keyReleased(java.awt.event.KeyEvent e) {
-        String texto = txtData_Nascimento.getText().replaceAll("[^0-9]", "");
-        int qtd = texto.length();
-
-        // Limita o máximo para 8 dígitos (DDMMAAAA)
-        if (qtd > 8) {
-            texto = texto.substring(0, 8);
-            qtd = 8;
         }
+    });
 
-        // Aplica as barras dinamicamente conforme digita
-        if (qtd > 0) {
-            if (qtd <= 2) {
-                // Apenas os dois primeiros dígitos (Dia)
-            } else if (qtd <= 4) {
-                texto = texto.substring(0, 2) + "/" + texto.substring(2);
-            } else {
-                texto = texto.substring(0, 2) + "/" + texto.substring(2, 4) + "/" + texto.substring(4);
+        // --- MÁSCARA EM TEMPO REAL PARA A DATA (txtData_Nascimento) ---
+        txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+        @Override
+        
+        public void keyReleased(java.awt.event.KeyEvent e) {
+            String texto = txtData_Nascimento.getText().replaceAll("[^0-9]", "");
+            int qtd = texto.length();
+
+            // Limita o máximo para 8 dígitos (DDMMAAAA)
+            if (qtd > 8) {
+                texto = texto.substring(0, 8);
+                qtd = 8;
             }
-        }
+
+            // Aplica as barras dinamicamente conforme digita
+            if (qtd > 0) {
+                if (qtd <= 2) {
+                    // Apenas os dois primeiros dígitos (Dia)
+                } else if (qtd <= 4) {
+                    texto = texto.substring(0, 2) + "/" + texto.substring(2);
+                } else {
+                    texto = texto.substring(0, 2) + "/" + texto.substring(2, 4) + "/" + texto.substring(4);
+                }
+            }
 
         txtData_Nascimento.setText(texto);
-    }
-});
+        }
+    });
     }
 
     /**
@@ -124,6 +124,22 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btnCadastro1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        btnCancelar1 = new javax.swing.JButton();
+        txtSenha1 = new javax.swing.JPasswordField();
+        txtNome1 = new javax.swing.JTextField();
+        txtEmail2 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        txtConfirmar_Senha1 = new javax.swing.JPasswordField();
+        txtCelular1 = new javax.swing.JTextField();
+        txtData_Nascimento1 = new javax.swing.JTextField();
 
         txtEmail1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmail1.setSelectionColor(new java.awt.Color(0, 0, 0));
@@ -147,13 +163,15 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Cadastre-se");
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nome:");
 
         txtNome.setBackground(new java.awt.Color(255, 255, 255));
-        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txtNome.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtNome.addActionListener(this::txtNomeActionPerformed);
 
@@ -162,36 +180,40 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
 
         txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txtEmail.addActionListener(this::txtEmailActionPerformed);
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Celular:");
 
         txtCelular.setBackground(new java.awt.Color(255, 255, 255));
-        txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Data de Nascimento:");
 
         txtData_Nascimento.setBackground(new java.awt.Color(255, 255, 255));
-        txtData_Nascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtData_Nascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Senha:");
 
         txtSenha.setBackground(new java.awt.Color(255, 255, 255));
         txtSenha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtSenha.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtSenha.addActionListener(this::txtSenhaActionPerformed);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Confirmar senha: ");
 
+        txtConfirmar_Senha.setBackground(new java.awt.Color(255, 255, 255));
         txtConfirmar_Senha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        txtConfirmar_Senha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtConfirmar_Senha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txtConfirmar_Senha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtConfirmar_Senha.setSelectionColor(new java.awt.Color(0, 0, 0));
         txtConfirmar_Senha.addActionListener(this::txtConfirmar_SenhaActionPerformed);
@@ -199,7 +221,7 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         btnCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnCancelar.setContentAreaFilled(false);
         btnCancelar.setMaximumSize(new java.awt.Dimension(66, 20));
         btnCancelar.setMinimumSize(new java.awt.Dimension(66, 20));
@@ -312,6 +334,71 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         jPanel2.setPreferredSize(new java.awt.Dimension(410, 461));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Adobe Express - file (3).jpg"))); // NOI18N
+        jLabel8.setText("Nome:");
+
+        jLabel6.setText("Email:");
+
+        btnCadastro1.setBackground(new java.awt.Color(0, 0, 0));
+        btnCadastro1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnCadastro1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastro1.setText("Cadastrar");
+        btnCadastro1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnCadastro1.addActionListener(this::btnCadastroActionPerformed);
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 204, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel12.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+
+        btnCancelar1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCancelar1.setText("Cancelar");
+        btnCancelar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnCancelar1.setContentAreaFilled(false);
+        btnCancelar1.setMaximumSize(new java.awt.Dimension(66, 20));
+        btnCancelar1.setMinimumSize(new java.awt.Dimension(66, 20));
+        btnCancelar1.addActionListener(this::btnCancelarActionPerformed);
+
+        txtSenha1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtSenha1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtSenha1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtSenha1.setSelectionColor(new java.awt.Color(0, 0, 0));
+        txtSenha1.addActionListener(this::txtSenhaActionPerformed);
+
+        txtNome1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNome1.setSelectionColor(new java.awt.Color(0, 0, 0));
+        txtNome1.addActionListener(this::txtNomeActionPerformed);
+
+        txtEmail2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtEmail2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtEmail2.addActionListener(this::txtEmailActionPerformed);
+
+        jLabel13.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Celular:");
+
+        jLabel14.setText("Data de Nascimento:");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
+        jLabel15.setText("Senha:");
+
+        jButton2.setForeground(new java.awt.Color(0, 153, 255));
+        jButton2.setText("Já possuo conta");
+        jButton2.setToolTipText("");
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(this::jButton1ActionPerformed);
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
+        jLabel16.setText("Confirmar senha: ");
+
+        txtConfirmar_Senha1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtConfirmar_Senha1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtConfirmar_Senha1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtConfirmar_Senha1.setSelectionColor(new java.awt.Color(0, 0, 0));
+        txtConfirmar_Senha1.addActionListener(this::txtConfirmar_SenhaActionPerformed);
+
+        txtCelular1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtData_Nascimento1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -475,14 +562,24 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastro;
+    private javax.swing.JButton btnCadastro1;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -491,11 +588,17 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCelular1;
     private javax.swing.JPasswordField txtConfirmar_Senha;
+    private javax.swing.JPasswordField txtConfirmar_Senha1;
     private javax.swing.JTextField txtData_Nascimento;
+    private javax.swing.JTextField txtData_Nascimento1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmail1;
+    private javax.swing.JTextField txtEmail2;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNome1;
     private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JPasswordField txtSenha1;
     // End of variables declaration//GEN-END:variables
 }
