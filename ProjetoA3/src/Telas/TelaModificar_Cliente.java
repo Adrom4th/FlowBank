@@ -4,17 +4,16 @@
  */
 package Telas;
 
-/**
- *
- * @author HP_
- */
+import conexao.ClienteDAO;
+import conexao.Cliente_FlowBank;
+import javax.swing.JOptionPane;
+
+
 public class TelaModificar_Cliente extends javax.swing.JFrame {
-    
+    public Integer id;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaModificar_Cliente.class.getName());
 
-    /**
-     * Creates new form TelaModificar_Cliente
-     */
+   
     public TelaModificar_Cliente() {
         initComponents();
         txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -47,10 +46,10 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
 });
 
 // --- MÁSCARA EM TEMPO REAL PARA A DATA (txtData_Nascimento) ---
-txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     @Override
     public void keyReleased(java.awt.event.KeyEvent e) {
-        String texto = txtData_Nascimento.getText().replaceAll("[^0-9]", "");
+        String texto = txtDataNascimento.getText().replaceAll("[^0-9]", "");
         int qtd = texto.length();
 
         // Limita o máximo para 8 dígitos (DDMMAAAA)
@@ -70,11 +69,23 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
             }
         }
 
-        txtData_Nascimento.setText(texto);
+        txtDataNascimento.setText(texto);
     }
 });
     }
-
+    
+    public TelaModificar_Cliente(Integer id) {
+        initComponents();
+        
+        this.id = id;
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente_FlowBank cliente = clienteDAO.buscarClientePorId(id);
+        txtNome.setText(cliente.getNome());
+        txtEmail.setText(cliente.getEmail());
+        txtCelular.setText(cliente.getCelular());
+        txtDataNascimento.setText(String.valueOf(cliente.getData_Nascimento()));
+        txtSenha.setText(cliente.getSenha());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,7 +104,10 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         txtEmail = new javax.swing.JTextField();
         txtCelular = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
-        txtData_Nascimento = new javax.swing.JTextField();
+        txtDataNascimento = new javax.swing.JTextField();
+        lblEdite = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        btnConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(956, 675));
@@ -113,49 +127,78 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
 
         txtSenha.setText("jPasswordField1");
 
+        lblEdite.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
+        lblEdite.setText("Edite");
+
+        btnCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+
+        btnConfirmar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(this::btnConfirmarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblCelular)
-                    .addComponent(lblNome)
-                    .addComponent(lblSenha)
-                    .addComponent(lblDataNascimento)
-                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome)
-                    .addComponent(txtEmail)
-                    .addComponent(txtCelular)
-                    .addComponent(txtData_Nascimento)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEmail)
+                            .addComponent(txtCelular)
+                            .addComponent(txtDataNascimento)
+                            .addComponent(txtSenha)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSenha)
+                                    .addComponent(lblDataNascimento)
+                                    .addComponent(lblCelular)
+                                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblNome))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                                .addComponent(btnConfirmar))
+                            .addComponent(txtNome)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(lblEdite)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
+                .addComponent(lblEdite, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCelular)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDataNascimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtData_Nascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,6 +207,27 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        TelaExtrato telaExtrato = new TelaExtrato();
+        telaExtrato.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente_FlowBank cliente = new Cliente_FlowBank();
+        cliente.setNome(txtNome.getText());
+        cliente.setEmail(txtEmail.getText());
+        cliente.setCelular(txtCelular.getText());
+        
+        String dataTexto = txtDataNascimento.getText(); // ex: "2000-12-31"
+        java.sql.Date dataNascimento = java.sql.Date.valueOf(dataTexto);
+        cliente.setData_Nascimento(dataNascimento);;
+        
+        cliente.setSenha(txtSenha.getText());
+       
+    }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,13 +255,16 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblDataNascimento;
+    private javax.swing.JLabel lblEdite;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JTextField txtCelular;
-    private javax.swing.JTextField txtData_Nascimento;
+    private javax.swing.JTextField txtDataNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtSenha;

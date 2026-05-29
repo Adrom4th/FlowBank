@@ -147,11 +147,9 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Cadastre-se");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nome:");
 
         txtNome.setBackground(new java.awt.Color(255, 255, 255));
@@ -168,7 +166,6 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         txtEmail.addActionListener(this::txtEmailActionPerformed);
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Celular:");
 
         txtCelular.setBackground(new java.awt.Color(255, 255, 255));
@@ -181,7 +178,6 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         txtData_Nascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Senha:");
 
         txtSenha.setBackground(new java.awt.Color(255, 255, 255));
@@ -192,10 +188,8 @@ txtData_Nascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         txtSenha.addActionListener(this::txtSenhaActionPerformed);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Confirmar senha: ");
 
-        txtConfirmar_Senha.setBackground(new java.awt.Color(255, 255, 255));
         txtConfirmar_Senha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtConfirmar_Senha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtConfirmar_Senha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
