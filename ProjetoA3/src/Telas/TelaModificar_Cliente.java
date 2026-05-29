@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Telas;
 
 import conexao.ClienteDAO;
@@ -34,68 +31,78 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         
         lblNomeCabeçalho.setText(cliente.getNome());
         lblId.setText(String.valueOf(cliente.getId()));
-    }
-   
-    public TelaModificar_Cliente() {
-        initComponents();
+        
+        java.util.Set<java.awt.AWTKeyStroke> conjTeclas = new java.util.HashSet<>(
+        java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getDefaultFocusTraversalKeys(
+        java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+
+        // Adiciona a tecla ENTER na lista de teclas que passam para o próximo campo
+        conjTeclas.add(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
+
+        // Aplica essa nova regra globalmente para todos os componentes desta janela
+        this.setFocusTraversalKeys(java.awt.KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conjTeclas);
+
         txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
         @Override
         
-    public void keyReleased(java.awt.event.KeyEvent e) {
-        // Remove tudo o que não for número para recalcular a máscara corretamente
-        String texto = txtCelular.getText().replaceAll("[^0-9]", "");
-        int qtd = texto.length();
+        public void keyReleased(java.awt.event.KeyEvent e) {
+            // Remove tudo o que não for número para recalcular a máscara corretamente
+            String texto = txtCelular.getText().replaceAll("[^0-9]", "");
+            int qtd = texto.length();
 
-        // Limita o máximo de caracteres para 11 dígitos (DDD + 9 dígitos)
-        if (qtd > 11) {
-            texto = texto.substring(0, 11);
-            qtd = 11;
-        }
-
-        // Aplica a formatação dinamicamente de acordo com a quantidade de números
-        if (qtd > 0) {
-            if (qtd <= 2) {
-                texto = "(" + texto;
-            } else if (qtd <= 7) {
-                texto = "(" + texto.substring(0, 2) + ") " + texto.substring(2);
-            } else {
-                texto = "(" + texto.substring(0, 2) + ") " + texto.substring(2, 7) + "-" + texto.substring(7);
+            // Limita o máximo de caracteres para 11 dígitos (DDD + 9 dígitos)
+            if (qtd > 11) {
+                texto = texto.substring(0, 11);
+                qtd = 11;
             }
-        }
+
+            // Aplica a formatação dinamicamente de acordo com a quantidade de números
+            if (qtd > 0) {
+                if (qtd <= 2) {
+                texto = "(" + texto;
+                } else if (qtd <= 7) {
+                    texto = "(" + texto.substring(0, 2) + ") " + texto.substring(2);
+                } else {
+                    texto = "(" + texto.substring(0, 2) + ") " + texto.substring(2, 7) + "-" + texto.substring(7);
+                }
+            }
         
-        // Atualiza o campo com a máscara aplicada e joga o cursor para o final
-        txtCelular.setText(texto);
-    }
-});
+            // Atualiza o campo com a máscara aplicada e joga o cursor para o final
+            txtCelular.setText(texto);
+        }
+    });
 
         // --- MÁSCARA EM TEMPO REAL PARA A DATA (txtData_Nascimento) ---
         txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
         @Override
-        
-    public void keyReleased(java.awt.event.KeyEvent e) {
-        String texto = txtDataNascimento.getText().replaceAll("[^0-9]", "");
-        int qtd = texto.length();
+        public void keyReleased(java.awt.event.KeyEvent e) {
+            String texto = txtDataNascimento.getText().replaceAll("[^0-9]", "");
+            int qtd = texto.length();
 
-        // Limita o máximo para 8 dígitos (DDMMAAAA)
-        if (qtd > 8) {
-            texto = texto.substring(0, 8);
-            qtd = 8;
-        }
-
-        // Aplica as barras dinamicamente conforme digita
-        if (qtd > 0) {
-            if (qtd <= 2) {
-                // Apenas os dois primeiros dígitos (Dia)
-            } else if (qtd <= 4) {
-                texto = texto.substring(0, 2) + "/" + texto.substring(2);
-            } else {
-                texto = texto.substring(0, 2) + "/" + texto.substring(2, 4) + "/" + texto.substring(4);
+            // Limita o máximo para 8 dígitos (DDMMAAAA)
+            if (qtd > 8) {
+                texto = texto.substring(0, 8);
+                qtd = 8;
             }
-        }
 
-        txtDataNascimento.setText(texto);
-    }
-});
+            // Aplica as barras dinamicamente conforme digita
+            if (qtd > 0) {
+                if (qtd <= 2) {
+                    // Apenas os dois primeiros dígitos (Dia)
+                } else if (qtd <= 4) {
+                    texto = texto.substring(0, 2) + "/" + texto.substring(2);
+                } else {
+                    texto = texto.substring(0, 2) + "/" + texto.substring(2, 4) + "/" + texto.substring(4);
+                }
+            }
+
+            txtDataNascimento.setText(texto);
+        }
+    });
+}
+   
+    public TelaModificar_Cliente() {
+        initComponents();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -128,7 +135,6 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(814, 675));
 
         jPanel1.setBackground(new java.awt.Color(244, 245, 248));
 
@@ -139,7 +145,7 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
 
         btnCancelar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         btnConfirmar.setBackground(new java.awt.Color(0, 0, 0));
@@ -171,7 +177,7 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         lblSenha.setToolTipText("");
 
         txtSenha.setText("jPasswordField1");
-        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
