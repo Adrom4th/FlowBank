@@ -261,6 +261,7 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(2, 3, 5));
+        jPanel2.setPreferredSize(new java.awt.Dimension(826, 83));
 
         lblNomeCabeçalho.setBackground(new java.awt.Color(255, 255, 255));
         lblNomeCabeçalho.setForeground(new java.awt.Color(255, 255, 255));
@@ -336,7 +337,7 @@ public class TelaModificar_Cliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
