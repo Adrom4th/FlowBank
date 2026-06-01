@@ -136,5 +136,18 @@ public class ClienteDAO {
             throw new RuntimeException(exception);
         }
     }
+    
+    public boolean excluirCliente (Integer id) throws SQLException {
+        String sql = "DELETE FROM clientes WHERE id = ?";
+        
+        try (PreparedStatement ps = conexao.prepareStatement (sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        }
+        catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir a conta");
+            return false;
+        }
+    }
 }
 
