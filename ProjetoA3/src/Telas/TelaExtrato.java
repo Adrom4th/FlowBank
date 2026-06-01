@@ -260,6 +260,9 @@ public class TelaExtrato extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
+        tblExtrato.setBackground(new java.awt.Color(255, 255, 255));
+        tblExtrato.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblExtrato.setForeground(new java.awt.Color(0, 0, 0));
         tblExtrato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
