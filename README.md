@@ -25,6 +25,14 @@ O projeto FlowBank é uma aplicação bancária desktop desenvolvida como projet
 
 ---
 
+### Estrutura do Banco de Dados
+O sistema utiliza duas tabelas principais:
+
+- **clientes** — armazena os dados dos usuários (id, nome, e-mail, celular, data de nascimento, senha)
+- **extrato** — registra todos os lançamentos financeiros, com suporte a transferências vinculadas via coluna id_transferencia (UUID)
+
+--- 
+
 ### Como Rodar o Projeto Localmente
 
 #### Pré-requisitos
@@ -80,11 +88,6 @@ Tabela **Extrato**
 
 ---
 
-### Estrutura do Banco de Dados
-O sistema utiliza duas tabelas principais:
-
-- **clientes** — armazena os dados dos usuários (id, nome, e-mail, celular, data de nascimento, senha)
-- **extrato** — registra todos os lançamentos financeiros, com suporte a transferências vinculadas via coluna id_transferencia (UUID)
 
 ---
 
