@@ -71,7 +71,7 @@ O sistema utiliza duas tabelas principais:
     ```
 
 3. Execute o script SQL para criar as tabelas no seu banco de dados.
-Tabela **Clientes**
+- Tabela **Clientes**
     ```
     CREATE TABLE clientes (
         id SERIAL PRIMARY KEY,
@@ -84,7 +84,7 @@ Tabela **Clientes**
     )
     ```
     
-Tabela **Extrato**
+- Tabela **Extrato**
     ```
     CREATE TABLE extrato (
         id_transacao SERIAL PRIMARY KEY,
