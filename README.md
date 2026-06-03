@@ -47,9 +47,32 @@ O projeto FlowBank é uma aplicação bancária desktop desenvolvida como projet
     ```
 
 3. Execute o script SQL para criar as tabelas no seu banco de dados.
-
-O script de criação das tabelas está disponível em sql/schema.sql (se aplicável).
-
+Tabela **Clientes**
+    ```
+    CREATE TABLE clientes (
+        id SERIAL PRIMARY KEY,
+        nome VARCHAR(50) NOT NULL,
+        email VARCHAR(50) UNIQUE NOT NULL,
+        celular VARCHAR(15) UNIQUE NOT NULL,
+        data_nascimento DATE NOT NULL,
+        senha VARCHAR(30) NOT NULL,
+        data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    ```
+    
+Tabela **Extrato**
+    ```
+    CREATE TABLE extrato (
+        id_transacao SERIAL PRIMARY KEY,
+        id_cliente INT REFERENCES clientes(id),
+        id_transferencia UUID,
+        tipo_transacao VARCHAR(10) NOT NULL,
+        valor_transacao NUMERIC NOT NULL,
+        forma_pagamento VARCHAR(3) NOT NULL,
+        data_transacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    ```
+    
 4. Abra o projeto na IDE
 - Vá em File -> Open Project e selecione a pasta do FlowBank
 - Certifique-se de que o driver JDBC do PostgreSQL está nas libraries do projeto
