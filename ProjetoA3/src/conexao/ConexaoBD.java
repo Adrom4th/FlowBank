@@ -7,9 +7,9 @@ import javax.swing.JOptionPane;
 
 public class ConexaoBD {
     
-    public static String URL = "jdbc:postgresql://aws-1-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require";
-    public static String USERNAME = "postgres.orvqpsownanqzolexlgv";
-    public static String PASSWORD = "MNkLWR1VlT7iASfO";
+    public static String URL = "jdbc:postgresql://SEU_HOST:5432/postgres";
+    public static String USERNAME = "SEU_USUARIO";
+    public static String PASSWORD = "SUA_SENHA";
     public static String DRIVER = "org.postgresql.Driver";
     
     public static Connection getConnection() {
