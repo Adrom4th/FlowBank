@@ -7,6 +7,7 @@ O projeto FlowBank é uma aplicação bancária desktop desenvolvida como projet
 - **Cadastro de clientes** com validação de dados
 - **Autenticação via login** com e-mail e senha
 - **Extrato bancário** com listagem de lançamentos com data, descrição e valor
+- **Modificação de dados cadastrais** para manter o sistema sempre atualizado com os dados do usuário
 - **Transferência entre contas** validada com movimentação em registro duplo (double-entry), vinculado por UUID para garantir rastreabilidade
 - **Integridade transacional** com uso de transações JDBC com rollback automático em caso de falha
 
