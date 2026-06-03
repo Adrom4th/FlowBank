@@ -28,16 +28,16 @@ O projeto FlowBank é uma aplicação bancária desktop desenvolvida como projet
 ![TelaCadastro](Screenshots/TelaCadastro.jpeg)
 
 #### Tela de Login
-![TelaLogin](Screenshots/TelaLogin.jpeg)
+![TelaLogin](Screenshots/TelaLogin.png)
 
 #### Tela Principal
-![TelaPrincipal](Screenshots/TelaPrincipal.jpeg)
+![TelaPrincipal](Screenshots/TelaPrincipal.png)
 
 #### Tela de Transferência
-![TelaTransferencia](Screenshots/TelaTransferencia.jpeg)
+![TelaTransferencia](Screenshots/TelaTransferencia.png)
 
 #### Tela de Modificar Dados do Usuário
-![TelaModificarDados](Screenshots/TelaModificarDados.jpeg)
+![TelaModificarDados](Screenshots/TelaModificarDados.png)
 
 ---
 
