@@ -59,7 +59,7 @@ O sistema utiliza duas tabelas principais:
 #### Passo a passo
 1. Clone o repositório
     ```
-    git clone https://github.com/Adrom4th/FlowBank.git
+    https://github.com/Adrom4th/FlowBank_A3.git
     ```
 
 2. Configure as credenciais do banco de dados
@@ -106,3 +106,8 @@ O sistema utiliza duas tabelas principais:
 
 ### 👨‍💻 Autor
 Desenvolvido por Matheus Henrique, Matheus Serpeloni Silva, Leonardo Viana, Nicholas Alves e Lucas Ribeiro	como projeto de estudos de conceitos de lógica de programação em Java
+
+---
+
+### 📄 Licença
+Este projeto foi desenvolvido para fins acadêmicos.
