@@ -88,8 +88,5 @@ Tabela **Extrato**
 
 ---
 
-
----
-
 ### 👨‍💻 Autor
 Desenvolvido por Matheus Henrique, Matheus Serpeloni Silva, Leonardo Viana, Nicholas Alves e Lucas Ribeiro	como projeto de estudos de conceitos de lógica de programação em Java
