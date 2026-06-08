@@ -59,7 +59,7 @@ O sistema utiliza duas tabelas principais:
 #### Passo a passo
 1. Clone o repositório
     ```
-    https://github.com/Adrom4th/FlowBank_A3.git
+    https://github.com/Adrom4th/FlowBank.git
     ```
 
 2. Configure as credenciais do banco de dados
